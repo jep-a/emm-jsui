@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" class="icon-svg" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.icon-svg-path{fill:none;stroke:#FFFFFF;stroke-width:3.427;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.icon-svg-path.filled{fill:#FFFFFF;}
+</style>
+<path class="icon-svg-path" d="M8.712,24.823c-0.23-1.07-0.885-2.139-1.96-2.498c-0.691-0.231-1.497-0.227-2.397,0.134
+	c-1.454,0.582-2.217,2.193-2.03,3.739c0.099,0.82,0.473,1.633,1.098,2.197c0.719,0.648,1.7,0.839,2.643,0.839
+	c3.529,0,18.528,0,18.528,0"/>
+<line class="icon-svg-path" x1="23.711" y1="29.234" x2="24.593" y2="23.058"/>
+<line class="icon-svg-path" x1="18.417" y1="29.234" x2="17.535" y2="24.823"/>
+<path class="icon-svg-path" d="M22.829,23.058c2.287-0.523,3.881-0.694,5.34-2.162c0.612-0.615,1.659-2.261,1.524-2.534
+	c-0.597-1.2-1.397-2.644-2.725-3.925c-0.953-0.919-3.669-1.942-4.438-2.341c0,0-1.401-8.187-5.878-9.33c0,0-2.582,3.398,0.882,9.705
+	"/>
+<path class="icon-svg-path" d="M11.359,13.353c0,0-2.244-0.3-3.529,0.739c-2.101,1.699-2.621,4.411-2.621,4.411"/>
+<path class="icon-svg-path" d="M16.31,9.726c0,0-1.919-4.845-6.225-4.85c0,0-1.537,5.341,3.039,10.241"/>
+</svg>

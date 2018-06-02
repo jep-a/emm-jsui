@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" class="icon-svg" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.icon-svg-path{fill:none;stroke:#FFFFFF;stroke-width:3.427;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.icon-svg-path.filled{fill:#FFFFFF;}
+</style>
+<polyline class="icon-svg-path" points="13.74,21.957 13.341,23.327 9.625,23.622 "/>
+<polyline class="icon-svg-path" points="16.099,26.147 18.834,22.544 15.161,17.658 16.913,11.39 "/>
+<polyline class="icon-svg-path" points="11.42,15.602 11.42,12.738 16.913,11.39 19.609,15.602 21.636,14.758 "/>
+<circle class="icon-svg-path filled" cx="19.887" cy="7.722" r="0.906"/>
+<circle class="icon-svg-path" cx="16" cy="16" r="13.953"/>
+<line class="icon-svg-path" x1="28.867" y1="3.133" x2="26.294" y2="5.706"/>
+<line class="icon-svg-path" x1="5.706" y1="26.294" x2="3.133" y2="28.867"/>
+<line class="icon-svg-path" x1="28.867" y1="28.867" x2="26.294" y2="26.294"/>
+<line class="icon-svg-path" x1="5.706" y1="5.706" x2="3.133" y2="3.133"/>
+</svg>

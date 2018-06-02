@@ -1,0 +1,34 @@
+.player
+	&-list
+		overflow: hidden
+		min-height: $text-padding
+
+	&-row
+		+nowrap
+		position: relative
+		padding: (($text-padding/2) + 4) $text-padding
+		text-align: left
+		transition: margin-bottom $transition-ease, opacity $transition-ease
+		-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease
+
+		&-enter:not(&-enter-active),
+		&-exit-active
+			margin-bottom: calc((#{(($text-padding/2) + 4) * 2} + #{$player-font-size + 4}) * -1)
+			opacity: 0
+
+		&::before
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			content: ""
+			opacity: 0.25
+			background-position: center
+			background-size: cover
+
+		&:last-child::after
+			border-bottom: none
+
+		&-name
+			+player-font

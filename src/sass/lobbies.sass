@@ -1,0 +1,76 @@
+#lobbies-column
+	width: 560px
+
+#lobby-list
+	min-height: $text-padding
+	padding-bottom: $section-padding
+
+.lobbies
+	&-label
+		&-section
+			display: inline-block
+
+		&-left
+			float: left
+			margin-right: $section-padding
+
+		&-right
+			float: right
+
+=lobby-row-flashing
+	$opacity: 0.125
+	0%
+		background-color: rgba(#ffffff, $opacity)
+	50%
+		background-color: rgba(#ffffff, 0)
+	100%
+		background-color: rgba(#ffffff, $opacity)
+
+@keyframes lobby-row-flashing
+	+lobby-row-flashing
+
+@-webkit-keyframes lobby-row-flashing
+	+lobby-row-flashing
+
+.lobby
+	&-row
+		overflow: hidden
+		position: relative
+		padding: ($text-padding - 10) $text-padding 0
+		cursor: pointer
+		transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
+		-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
+
+		&.current
+			animation: lobby-row-flashing 1.5s infinite
+			-webkit-animation: lobby-row-flashing 1.5s infinite
+
+		&::after
+			padding-top: ($text-padding - 10)
+			border-bottom: $text-border
+
+		&:last-child::after
+			border-bottom: none
+
+		.icon-svg-path
+			transition: stroke $transition-ease
+			-webkit-transition: stroke $transition-ease
+
+		&-section
+			display: inline-block
+			line-height: $text-padding - 1
+
+		&-left
+			float: left
+			margin-right: $text-padding - 5
+
+		&-right
+			float: right
+
+		&-badge
+			+badge-font
+
+		&-enter:not(&-enter-active),
+		&-exit-active
+			margin-bottom: -(($text-padding - 1) + (($text-padding - 10) * 2) + $text-border-thickness)
+			opacity: 0

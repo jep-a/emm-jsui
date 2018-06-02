@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" class="icon-svg" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.icon-svg-path{fill:none;stroke:#FFFFFF;stroke-width:3.427;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.icon-svg-path.filled{fill:#FFFFFF;}
+</style>
+<polygon class="icon-svg-path" points="3.366,23.827 16,29.25 28.634,23.827 28.634,8.173 16,2.75 3.366,8.173 "/>
+<polyline class="icon-svg-path" points="3.366,8.173 16,13.597 28.634,8.173 "/>
+<line class="icon-svg-path" x1="16" y1="13.597" x2="16" y2="29.25"/>
+</svg>

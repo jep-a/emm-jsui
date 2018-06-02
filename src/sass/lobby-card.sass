@@ -1,0 +1,45 @@
+#lobby-card-column
+	position: absolute
+	display: inline-block
+	margin-left: $page-width
+
+	.browser &
+		margin-left: 0
+
+	.prototype-card-icon
+		.icon-svg
+			+icon-big
+
+			&-path
+				stroke: #ffffff
+
+.lobby-card
+	&-prototype
+		$height: 64px
+		height: $height
+
+		&-icon-box
+			display: block
+			float: left
+			width: $height
+			height: $height
+			text-align: center
+			line-height: $height
+
+		&-title
+			text-align: center
+			line-height: $height
+
+			.prototype-title
+				+prototype-font-big
+
+	&-join-leave-button
+		+prototype-font
+		position: relative
+		padding: ($text-padding - 5) 0 $text-padding + 5
+		cursor: pointer
+		transition: color $transition-ease
+		-webkit-transition: color $transition-ease
+
+		&:hover
+			color: rgba(#ffffff, 0.5)
