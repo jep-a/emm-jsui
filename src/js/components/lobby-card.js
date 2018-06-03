@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg'
 import {inject, observer} from 'mobx-react'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
-import PlayerList from './player-list';
+import PlayerList from './player-list'
 import Flash from './flash'
 
 class LobbyCardJoinLeaveButton extends Component {
