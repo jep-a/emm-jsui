@@ -8,15 +8,15 @@ import LobbyRow from './lobby-row'
 export default class LobbyList extends Component {
 	render() {
 		return (
-			<section id="lobbies-column" className="column">
+			<section className="lobbies-column column">
 				<h1 className="column-title">active lobbies</h1>
-				<div id="lobbies-body" className="column-body">
-					<div id="lobbies-labels" className="column-label clear-fix">
-						<div className="lobbies-label-left lobbies-label-section"><span className="lobby-label-prototype">type</span></div>
-						<div className="lobbies-label-left lobbies-label-section"><span className="lobby-label-host">host</span></div>
-						<div className="lobbies-label-right lobbies-label-section"><span className="lobby-label-players">players</span></div>
+				<div className="lobbies column-body">
+					<div className="column-label clear-fix">
+						<span className="lobbies-list-prototype-column lobbies-list-column">type</span>
+						<span className="lobbies-list-host-column lobbies-list-column">host</span>
+						<span className="lobbies-list-players-column lobbies-list-column">players</span>
 					</div>
-					<TransitionGroup id="lobby-list">
+					<TransitionGroup className="lobbies-list">
 						{Array.from(this.props.lobbies.values()).map(lobby =>
 							<CSSTransition key={lobby.id} timeout={200} classNames="lobby-row">
 								<LobbyRow key={lobby.id} lobby={lobby} current={this.props.lobbyContext.current == lobby} selected={this.props.lobbyContext.selected == lobby}/>

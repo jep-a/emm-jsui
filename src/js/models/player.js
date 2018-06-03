@@ -15,7 +15,7 @@ export default class Player {
 		const xhr = new XMLHttpRequest
 		xhr.onreadystatechange = () => {
 			if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-				this.avatarUrl = JSON.parse(xhr.responseText).response.players[0].avatarfull
+				this.avatarURL = JSON.parse(xhr.responseText).response.players[0].avatarfull
 				this.addBackgroundCSS()
 			}
 		}
@@ -24,8 +24,8 @@ export default class Player {
 	}
 
 	addBackgroundCSS() {
-		app.stylesheet.insertRule('.player-row.player-' + this.id + '::before', {
-			'background-image': 'url(' + this.avatarUrl + ')'
+		app.stylesheet.insertRule(`.player-${this.id}.player-row::before`, {
+			'background-image': `url(${this.avatarURL})`
 		})
 	}
 }

@@ -4,12 +4,11 @@ import {observer} from 'mobx-react'
 @observer export default class LobbyManager extends Component {
 	render() {
 		return (
-			<section id="lobby-manager-column" className="lobby-column">
-				<div id="lobby-manager-body">
-					<div className="column-section">
-						
-					</div>
-				</div>
+			<section className="lobby-manager column-body-column">
+				<section className="lobby-manager-password column-section">
+				</section>
+				<section className="lobby-manager-variables column-section">
+				</section>
 			</section>
 		)
 	}

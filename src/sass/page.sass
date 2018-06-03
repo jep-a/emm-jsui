@@ -1,7 +1,6 @@
 .page
 	width: $page-width + $column-width
 	margin: 0 auto ($section-padding * 2)
-	text-align: left
 	transform: translateX($column-width/2)
 	-webkit-transform: translate($column-width/2, 0)
 	transition: transform $transition-ease
@@ -15,7 +14,6 @@
 	float: left
 	width: $column-width
 	padding: $section-padding/2
-	text-align: left
 	transition: opacity $transition-ease
 	-webkit-transition: opacity $transition-ease
 
@@ -46,7 +44,6 @@
 	&-label
 		+label-font
 		padding: ($text-padding - 2) $text-padding 0
-		text-align: left
 
 		&::after
 			padding-top: $text-padding/2

@@ -37,17 +37,9 @@ export default class LobbyRow extends Component {
 		)
 		return (
 			<div onClick={this.handleClick} onDoubleClick={this.handleDoubleClick} className={className}>
-				<div className="lobby-row-left lobby-row-section">
-					<span className="lobby-row-prototype">
-						<SVG cacheGetRequests={true} src={this.props.lobby.iconSVG} className="prototype-icon"/>
-					</span>
-				</div>
-				<div className="lobby-row-left lobby-row-section">
-					<span className="lobby-row-host">{this.props.lobby.host == this.props.currentPlayer ? 'you' : this.props.lobby.hostName}</span>
-				</div>
-				<div className="lobby-row-right lobby-row-section">
-					<span className="lobby-row-players lobby-row-badge">{this.props.lobby.playerCount}</span>
-				</div>
+				<span className="lobbies-list-prototype-column lobbies-list-column"><SVG cacheGetRequests={true} src={this.props.lobby.iconSVG} className="prototype-icon"/></span>
+				<span className="lobbies-list-host-column lobbies-list-column">{this.props.lobby.host == this.props.currentPlayer ? 'you' : this.props.lobby.hostName}</span>
+				<span className="lobbies-list-players-column lobbies-list-column badge">{this.props.lobby.playerCount}</span>
 				<Flash/>
 			</div>
 		)

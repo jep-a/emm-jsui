@@ -4,10 +4,10 @@ import PrototypeRow from './prototype-row'
 export default class PrototypeList extends Component {
 	render() {
 		return (
-			<section id="prototypes-column" className="column">
+			<section className="prototypes-column column">
 				<h1 className="column-title">make a lobby</h1>
-				<div id="prototypes-body" className="column-body">
-					<ul id="prototype-list">
+				<div className="prototypes column-body">
+					<ul className="prototypes-list">
 						{Array.from(this.props.prototypes.values()).map(prototype =>
 							<PrototypeRow key={prototype.id} prototype={prototype}/>
 						)}
