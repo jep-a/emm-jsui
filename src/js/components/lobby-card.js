@@ -38,9 +38,10 @@ class LobbyCardJoinLeaveButton extends Component {
 @observer
 export default class LobbyCard extends Component {
 	render() {
+		const hosting = this.props.lobby.host == this.props.currentPlayer
 		return (
-			<section className={classnames('lobby-card-column', `prototype-${this.props.lobby.prototypeKey}`, 'column')}>
-				<h1 className="column-title">{`${this.props.lobby.host == this.props.currentPlayer ? 'your' : `${this.props.lobby.hostName}'s`} lobby`}</h1>
+			<section className={classnames('lobby-card-column', `prototype-${this.props.lobby.prototypeKey}`, 'column', {'extended': hosting})}>
+				<h1 className="column-title">{`${hosting ? 'your' : `${this.props.lobby.hostName}'s`} lobby`}</h1>
 				<section className="column-clear-body">
 					<section className="lobby-card column-body-column">
 						<section className="lobby-card-prototype column-section">
@@ -58,7 +59,9 @@ export default class LobbyCard extends Component {
 					</section>
 					<TransitionGroup component={null}>
 						<CSSTransition timeout={200} classNames="column-body-column">
-							<LobbyManager lobby={this.props.lobby}/>
+							{hosting &&
+								<LobbyManager lobby={this.props.lobby}/>
+							}
 						</CSSTransition>
 					</TransitionGroup>
 				</section>
