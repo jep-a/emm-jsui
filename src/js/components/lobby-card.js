@@ -58,11 +58,11 @@ export default class LobbyCard extends Component {
 						<LobbyCardJoinLeaveButton lobby={this.props.lobby} current={this.props.lobby == this.props.lobbyContext.current}/>
 					</section>
 					<TransitionGroup component={null}>
-						<CSSTransition timeout={200} classNames="column-body-column">
-							{hosting &&
+						{hosting &&
+							<CSSTransition timeout={200} classNames="column-body-column">
 								<LobbyManager lobby={this.props.lobby}/>
-							}
-						</CSSTransition>
+							</CSSTransition>
+						}
 					</TransitionGroup>
 				</section>
 			</section>
