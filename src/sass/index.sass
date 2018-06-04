@@ -5,7 +5,8 @@ $text-padding: 25px
 $text-border-thickness: 2px
 $text-border: $text-border-thickness solid
 $title-border: 3px solid
-$transition-ease: 0.2s cubic-bezier(0.13, 0.65, 0.24, 1.01)
+$transition-cubic: cubic-bezier(0.13, 0.65, 0.24, 1.01)
+$transition-ease: 0.2s $transition-cubic
 
 =checkered
 	$background-color: rgba(#808080, 1)
@@ -143,7 +144,7 @@ svg
 		opacity: 1
 
 	&-enter-active
-		transition: opacity $transition-ease
-		-webkit-transition: opacity $transition-ease
+		transition: opacity 0.5s $transition-cubic
+		-webkit-transition: opacity 0.5s $transition-cubic
 
 @import 'page'

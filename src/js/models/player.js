@@ -1,15 +1,19 @@
-import {observable} from 'mobx'
+import {observable, computed} from 'mobx'
 import {steamAPI, steamAPIKey} from '../steam'
 
 export default class Player {
+	store = null
 	@observable name = null
 
-	constructor(props) {
+	constructor(store, props) {
+		this.store = store
 		this.id = props.id
 		this.steamID = props.steamID
 		this.name = props.name
 		this.getAvatarURL()
 	}
+
+	@computed get current() {return this == this.store.currentPlayer}
 
 	getAvatarURL() {
 		const xhr = new XMLHttpRequest

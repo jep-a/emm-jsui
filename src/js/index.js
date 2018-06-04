@@ -24,7 +24,7 @@ class App {
 	}
 
 	render() {
-		render(<AppComponent currentPlayer={this.store.currentPlayer} prototypes={this.store.prototypes} lobbies={this.store.lobbies} lobbyContext={this.store.lobbyContext}/>, document.getElementById('app-container'))
+		render(<AppComponent store={this.store}/>, document.getElementById('app-container'))
 	}
 
 	show() {

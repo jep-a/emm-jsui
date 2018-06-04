@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {observer, Provider} from 'mobx-react'
+import {observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import classnames from 'classnames'
 import PrototypeList from './prototype-list'
@@ -9,21 +9,18 @@ import LobbyManager from './lobby-manager'
 
 @observer export default class AppComponent extends Component {
 	render() {
-		const expandedLobby = this.props.lobbyContext.selected || this.props.lobbyContext.current
 		return (
-			<Provider currentPlayer={this.props.currentPlayer} lobbyContext={this.props.lobbyContext}>
-				<section id="lobbies-page" className={classnames('page', 'clear-fix', {'extended': expandedLobby})}>
-					<PrototypeList prototypes={this.props.prototypes}/>
-					<LobbyList lobbies={this.props.lobbies}/>
-					<TransitionGroup component={null}>
-						{expandedLobby &&
-							<CSSTransition timeout={200} classNames="column">
-								<LobbyCard lobby={expandedLobby}/>
-							</CSSTransition>
-						}
-					</TransitionGroup>
-				</section>
-			</Provider>
+			<section id="lobbies-page" className={classnames('page', 'clear-fix', {'extended': this.props.store.expandedLobby})}>
+				<PrototypeList prototypes={this.props.store.prototypes}/>
+				<LobbyList lobbies={this.props.store.lobbyArray}/>
+				<TransitionGroup component={null}>
+					{this.props.store.expandedLobby &&
+						<CSSTransition timeout={200} classNames="column">
+							<LobbyCard lobby={this.props.store.expandedLobby}/>
+						</CSSTransition>
+					}
+				</TransitionGroup>
+			</section>
 		)
 	}
 }

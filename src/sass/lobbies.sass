@@ -38,7 +38,7 @@
 	transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
 	-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
 
-	&.current
+	&.current:not(.selected)
 		animation: lobby-row-flashing 1.5s infinite
 		-webkit-animation: lobby-row-flashing 1.5s infinite
 

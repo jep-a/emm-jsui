@@ -22,7 +22,7 @@ export default class Flash extends Component {
 
 	render () {
 		return (
-			<CSSTransition in={this.state.in} timeout={200} onClick={this.handleClick} onEntered={this.resetState} classNames="flash">
+			<CSSTransition in={this.state.in} timeout={500} onClick={this.handleClick} onEntered={this.resetState} classNames="flash">
 				<span className="flash"></span>
 			</CSSTransition>
 		)

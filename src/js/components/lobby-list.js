@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import {inject, observer} from 'mobx-react'
+import {observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import LobbyRow from './lobby-row'
 
-@inject('lobbyContext')
-@observer
-export default class LobbyList extends Component {
+@observer export default class LobbyList extends Component {
 	render() {
 		return (
 			<section className="lobbies-column column">
@@ -19,7 +17,7 @@ export default class LobbyList extends Component {
 					<TransitionGroup className="lobbies-list">
 						{Array.from(this.props.lobbies.values()).map(lobby =>
 							<CSSTransition key={lobby.id} timeout={200} classNames="lobby-row">
-								<LobbyRow key={lobby.id} lobby={lobby} current={this.props.lobbyContext.current == lobby} selected={this.props.lobbyContext.selected == lobby}/>
+								<LobbyRow key={lobby.id} lobby={lobby}/>
 							</CSSTransition>
 						)}
 					</TransitionGroup>

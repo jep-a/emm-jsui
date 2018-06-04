@@ -110,7 +110,7 @@ export default class BrowserEMM {
 	}
 
 	overrideLobby() {
-		if (window.app.store.lobbyContext.current) {
+		if (window.app.store.currentLobby) {
 			this.leaveLobby()
 		}
 	}
@@ -138,15 +138,15 @@ export default class BrowserEMM {
 	}
 
 	leaveLobby() {
-		if (window.app.store.lobbyContext.current && window.app.store.lobbyContext.current.id == 4) {
+		if (window.app.store.currentLobby && window.app.store.currentLobby.id == 4) {
 			this.removeLobby()
 		} else {
-			window.app.store.removeLobbyPlayer(window.app.store.lobbyContext.current.id, 5)
+			window.app.store.removeLobbyPlayer(window.app.store.currentLobby.id, 5)
 		}
 
 		window.app.store.clearCurrentLobby()
 
-		if (window.app.store.lobbyContext.selected && window.app.store.lobbyContext.selected.id == 4) {
+		if (window.app.store.selectedLobby && window.app.store.selectedLobby.id == 4) {
 			window.app.store.clearSelectedLobby()
 		}
 	}
