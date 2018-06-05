@@ -1,32 +1,28 @@
 import React, {Component} from 'react'
 import SVG from 'react-inlinesvg'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
-import {observer} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
 import PlayerList from './player-list'
 import LobbyManager from './lobby-manager'
 import Flash from './flash'
 
-@observer class LobbyCardJoinLeaveButton extends Component {
+@inject('emm')
+@observer
+class LobbyCardSwitch extends Component {
 	constructor(props) {
 		super(props)
 		autobind(this)
 	}
 
 	handleClick() {
-		if (this.props.lobby.current) {
-			window.EMM.leaveLobby()
-			window.app.store.clearCurrentLobby()
-			window.app.store.clearSelectedLobby()
-		} else {
-			window.EMM.joinLobby(this.props.lobby.id)
-		}
+		this.props.emm.switchLobby(this.props.lobby.id)
 	}
 
 	render() {
 		return (
-			<div onClick={this.handleClick} className={classnames('lobby-card-join-leave-button', `prototype-${this.props.lobby.prototypeKey}`, 'column-section')}>
+			<div onClick={this.handleClick} className={classnames('lobby-card-switch', `prototype-${this.props.lobby.prototypeKey}`, 'column-section')}>
 				<span className="underline">{this.props.lobby.current ? 'leave' : 'join'}</span>
 				<Flash/>
 			</div>
@@ -52,7 +48,7 @@ import Flash from './flash'
 							</div>
 						</section>
 						<PlayerList players={this.props.lobby.playerArray} className="column-section"/>
-						<LobbyCardJoinLeaveButton lobby={this.props.lobby}/>
+						<LobbyCardSwitch lobby={this.props.lobby}/>
 					</section>
 					<TransitionGroup component={null}>
 						{this.props.lobby.hosting &&

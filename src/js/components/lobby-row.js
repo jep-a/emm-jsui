@@ -1,28 +1,24 @@
 import React, {Component} from 'react'
 import SVG from 'react-inlinesvg'
-import {observer} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
 import Flash from './flash'
 
-@observer export default class LobbyRow extends Component {
+@inject('store', 'emm')
+@observer
+export default class LobbyRow extends Component {
 	constructor(props) {
 		super(props)
 		autobind(this)
 	}
 
 	handleClick() {
-		window.app.store.setSelectedLobby(this.props.lobby.id)
+		this.props.store.setSelectedLobby(this.props.lobby.id)
 	}
 
 	handleDoubleClick() {
-		if (this.props.lobby.current) {
-			window.EMM.leaveLobby()
-			window.app.store.clearCurrentLobby()
-			window.app.store.clearSelectedLobby()
-		} else {
-			window.EMM.joinLobby(this.props.lobby.id)
-		}
+		this.props.emm.switchLobby(this.props.lobby.id)
 	}
 
 	render() {
@@ -38,6 +34,7 @@ import Flash from './flash'
 				<span className="lobbies-list-prototype-column lobbies-list-column"><SVG cacheGetRequests={true} src={this.props.lobby.iconSVG} className="prototype-icon"/></span>
 				<span className="lobbies-list-host-column lobbies-list-column">{this.props.lobby.hosting ? 'you' : this.props.lobby.hostName}</span>
 				<span className="lobbies-list-players-column lobbies-list-column badge">{this.props.lobby.playerCount}</span>
+				<span className="pulse"></span>
 				<Flash/>
 			</div>
 		)

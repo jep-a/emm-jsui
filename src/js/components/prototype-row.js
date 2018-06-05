@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
+import {inject} from 'mobx-react'
 import SVG from 'react-inlinesvg'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
 import Flash from './flash'
 
+@inject('emm')
 export default class PrototypeRow extends Component {
 	constructor(props) {
 		super(props)
@@ -11,7 +13,7 @@ export default class PrototypeRow extends Component {
 	}
 
 	handleClick() {
-		window.EMM.createLobby(this.props.prototype.id)
+		this.props.emm.createLobby(this.props.prototype.id)
 	}
 
 	render() {

@@ -1,4 +1,4 @@
-=lobby-row-flashing
+=lobby-row-pulsing
 	$opacity: 0.125
 	0%
 		background-color: rgba(#ffffff, $opacity)
@@ -7,11 +7,11 @@
 	100%
 		background-color: rgba(#ffffff, $opacity)
 
-@keyframes lobby-row-flashing
-	+lobby-row-flashing
+@keyframes lobby-row-pulsing
+	+lobby-row-pulsing
 
-@-webkit-keyframes lobby-row-flashing
-	+lobby-row-flashing
+@-webkit-keyframes lobby-row-pulsing
+	+lobby-row-pulsing
 
 .lobbies
 	&-column
@@ -35,15 +35,26 @@
 	position: relative
 	padding: ($text-padding - 10) $text-padding 0
 	cursor: pointer
-	transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
-	-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease
-
-	&.current:not(.selected)
-		animation: lobby-row-flashing 1.5s infinite
-		-webkit-animation: lobby-row-flashing 1.5s infinite
+	transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
+	-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
 
 	&.selected
 		background-color: rgba(#ffffff, 0.075)
+
+	.pulse
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		opacity: 0
+		animation: lobby-row-pulsing 1.5s infinite
+		-webkit-animation: lobby-row-pulsing 1.5s infinite
+		transition: opacity $transition-ease
+		-webkit-transition: opacity $transition-ease
+
+	&.current:not(.selected) .pulse
+		opacity: 1
 
 	&::after
 		padding-top: ($text-padding - 10)

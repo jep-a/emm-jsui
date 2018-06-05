@@ -63,6 +63,9 @@ export default class Store {
 		if (lobby.players.includes(this.currentPlayer)) {
 			this.setCurrentLobby(json.id)
 		}
+		if (lobby.hosting) {
+			this.setSelectedLobby(json.id)
+		}
 	}
 
 	@action removeLobby(id) {

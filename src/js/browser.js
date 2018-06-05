@@ -1,7 +1,10 @@
 export default class BrowserEMM {
+	playerID = 5
+	lobbyID = 4
+
 	constructor() {
 		window.initEmmJSON = {
-			currentPlayerID: 5,
+			currentPlayerID: this.playerID,
 			players: {
 				1: {
 					id: 1,
@@ -118,36 +121,35 @@ export default class BrowserEMM {
 	createLobby(prototypeID) {
 		this.overrideLobby()
 		window.app.store.addLobbyFromJSON({
-			id: 4,
+			id: this.lobbyID,
 			prototype: prototypeID,
-			host: 5,
-			players: [5]
+			host: this.playerID,
+			players: [this.playerID]
 		})
-		window.app.store.setCurrentLobby(4)
-		window.app.store.setSelectedLobby(4)
 	}
 
 	removeLobby() {
-		window.app.store.removeLobby(4)
+		window.app.store.removeLobby(this.lobbyID)
+	}
+
+	switchLobby(id) {
+		if (window.app.store.currentLobby && window.app.store.currentLobby.id == id) {
+			this.leaveLobby()
+		} else {
+			this.joinLobby(id)
+		}
 	}
 
 	joinLobby(id) {
 		this.overrideLobby()
-		window.app.store.addLobbyPlayer(id, 5)
-		window.app.store.setCurrentLobby(id)
+		window.app.store.addLobbyPlayer(id, this.playerID)
 	}
 
 	leaveLobby() {
-		if (window.app.store.currentLobby && window.app.store.currentLobby.id == 4) {
+		if (window.app.store.currentLobby.hosting) {
 			this.removeLobby()
 		} else {
-			window.app.store.removeLobbyPlayer(window.app.store.currentLobby.id, 5)
-		}
-
-		window.app.store.clearCurrentLobby()
-
-		if (window.app.store.selectedLobby && window.app.store.selectedLobby.id == 4) {
-			window.app.store.clearSelectedLobby()
+			window.app.store.removeLobbyPlayer(window.app.store.currentLobby.id, this.playerID)
 		}
 	}
 }
