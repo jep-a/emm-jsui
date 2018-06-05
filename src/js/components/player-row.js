@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
 import {observer} from 'mobx-react'
 import classnames from 'classnames'
+import React, {Component} from 'react'
 
 @observer export default class PlayerRow extends Component {
 	render() {

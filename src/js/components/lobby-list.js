@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
 import {observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import React, {Component} from 'react'
+
 import LobbyRow from './lobby-row'
 
 @observer export default class LobbyList extends Component {

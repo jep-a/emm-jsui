@@ -1,8 +1,9 @@
-import React, {Component} from 'react'
-import SVG from 'react-inlinesvg'
 import {inject, observer} from 'mobx-react'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
+import React, {Component} from 'react'
+import SVG from 'react-inlinesvg'
+
 import Flash from './flash'
 
 @inject('store', 'emm')

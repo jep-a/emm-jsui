@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import autobind from 'auto-bind'
 import {CSSTransition} from 'react-transition-group'
+import autobind from 'auto-bind'
+import React, {Component} from 'react'
 
 export default class Flash extends Component {
 	state = {

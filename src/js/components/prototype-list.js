@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+
 import PrototypeRow from './prototype-row'
 
 export default class PrototypeList extends Component {

@@ -1,7 +1,8 @@
 import {observable, computed, action} from 'mobx'
+
+import Lobby from './models/lobby'
 import Player from './models/player'
 import Prototype from './models/prototype'
-import Lobby from './models/lobby'
 
 export default class Store {
 	currentPlayer = null

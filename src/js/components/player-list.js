@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {observer} from 'mobx-react'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import classnames from 'classnames'
+import React, {Component} from 'react'
+
 import PlayerRow from './player-row'
 
 @observer export default class PlayerList extends Component {

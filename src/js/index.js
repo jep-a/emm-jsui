@@ -1,15 +1,15 @@
 import './polyfill'
 
-import React from 'react'
-import {render} from 'react-dom'
 import {Provider} from 'mobx-react'
+import {render} from 'react-dom'
 import autobind from 'auto-bind'
+import React from 'react'
 
+import {steamPlayerAPI, steamAPIKey} from './steam'
+import AppComponent from './components/app'
 import BrowserEMM from './browser'
 import Store from './store'
 import Stylesheet from './stylesheet'
-import AppComponent from './components/app'
-import {steamPlayerAPI, steamAPIKey} from './steam'
 
 const body = document.getElementsByTagName('body')[0]
 

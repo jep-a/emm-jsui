@@ -1,12 +1,13 @@
-import React, {Component} from 'react'
-import SVG from 'react-inlinesvg'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {inject, observer} from 'mobx-react'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import autobind from 'auto-bind'
 import classnames from 'classnames'
-import PlayerList from './player-list'
-import LobbyManager from './lobby-manager'
+import React, {Component} from 'react'
+import SVG from 'react-inlinesvg'
+
 import Flash from './flash'
+import LobbyManager from './lobby-manager'
+import PlayerList from './player-list'
 
 @inject('emm')
 @observer

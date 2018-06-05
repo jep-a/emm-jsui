@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
 import {inject, observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import classnames from 'classnames'
-import PrototypeList from './prototype-list'
-import LobbyList from './lobby-list'
+import React, {Component} from 'react'
+
 import LobbyCard from './lobby-card'
+import LobbyList from './lobby-list'
+import PrototypeList from './prototype-list'
 
 @inject('store')
 @observer
