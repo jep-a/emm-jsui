@@ -1,44 +1,44 @@
 .page
-	width: $page-width + $column-width
-	margin: 0 auto ($section-padding * 2)
-	transform: translateX($column-width/2)
-	-webkit-transform: translate($column-width/2, 0)
-	transition: transform $transition-ease
-	-webkit-transition: -webkit-transform $transition-ease
-
-	&.extended
-		transform: translateX(0)
-		-webkit-transform: translate(0, 0)
+	position: relative
+	margin-bottom: $section-padding
+	text-align: center
 
 .column
-	float: left
+	display: inline-block
 	width: $column-width
-	padding: $section-padding/2
-	transition: opacity $transition-ease
-	-webkit-transition: opacity $transition-ease
+	margin: $section-padding/2
+	text-align: left
+	vertical-align: top
 
-	&-enter:not(&-enter-active),
-	&-exit-active
-		opacity: 0
-
-	&-title
+	&-title,
+	&-blank-title
 		+nowrap
 		+title-font
 		display: inline-block
-		width: $column-width - $section-padding
-		margin: $section-padding 0
+		width: $column-width
+		margin-bottom: $section-padding
 		padding: 8px 20px 12px
 		text-align: center
+		vertical-align: middle
 		border: $title-border
 
 	&-body,
 	&-section
-		background-color: #2a2a2a
+		background-color: $background-color
+
+	&-body-column
+		display: inline-block
+		float: left
+		width: $column-width
+		margin-right: $section-padding
+
+		&:last-of-type
+			margin-right: 0
 
 	&-section
 		margin-bottom: $section-padding
 
-		&:last-child
+		&:last-of-type
 			margin-bottom: 0
 
 	&-label
@@ -46,6 +46,9 @@
 		padding: ($text-padding - 2) $text-padding 0
 
 		&::after
+			display: block
+			clear: both
+			content: ""
 			padding-top: $text-padding/2
 			border-bottom: $text-border
 

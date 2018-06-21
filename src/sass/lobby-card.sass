@@ -1,17 +1,16 @@
 .lobby-card
 	&-column
-		position: absolute
 		display: inline-block
-		margin-left: $page-width
+		width: auto
 
-		.browser &
-			margin-left: 0
+		&.extended
+			width: $column-width * 2
 
 	&-prototype
 		$height: 64px
 		height: $height
 
-		&-icon-box
+		.prototype-icon
 			display: block
 			float: left
 			width: $height
@@ -25,16 +24,14 @@
 				&-path
 					stroke: #ffffff
 
-		&-title
+		.prototype-title
+			+prototype-font-big
+			display: block
 			text-align: center
 			line-height: $height
 
-			.prototype-title
-				+prototype-font-big
-
 	&-switch
 		+prototype-font
-		position: relative
 		padding: ($text-padding - 5) 0 $text-padding + 5
 		cursor: pointer
 		text-align: center
@@ -43,3 +40,89 @@
 
 		&:hover
 			color: rgba(#ffffff, 0.5)
+
+.lobby-settings-column
+	width: auto
+
+.mod-category
+	&-column
+		background: $background-color
+
+	&-label
+		padding-bottom: $text-padding/2
+
+		&::after
+			display: none
+
+.input
+	+dark-divider
+	$height: 48px
+	overflow: hidden
+	position: relative
+	height: $height
+	transition: height $transition-ease, opacity $transition-ease
+	-webkit-transition: height $transition-ease, opacity $transition-ease
+
+	&-enter:not(&-enter-active),
+	&-exit-active
+		height: 0
+		opacity: 0
+	
+	input
+		padding-bottom: 4px
+		text-indent: $text-padding
+
+	&-label,
+	&-value
+		display: inline-block
+
+	&-label
+		+input-label-font
+		float: left
+		padding-left: $text-padding
+		line-height: $height
+
+	&-value
+		float: right
+		width: 50%
+		height: 100%
+		background: rgba(#000000, 0.25)
+
+	&-checkbox-checkbox
+		cursor: pointer
+		float: right
+		width: $height
+		text-align: center
+		line-height: $height
+		transform: rotateX(180deg)
+		-webkit-transform: rotateX(180deg)
+
+		&::before
+			content: "ヘ"
+			opacity: 0.125
+			transition: opacity $transition-ease
+			-webkit-transition: opacity $transition-ease
+
+		&.true::before
+			opacity: 1
+
+	&-time
+		.input-label
+			width: 65%
+
+		&-input,
+		&-display
+			width: 35%
+			
+		&-input,
+		&-input::selection
+			color: rgba(#ffffff, 0)
+			background-color: rgba(#ffffff, 0)
+
+		&-display
+			+text-font
+			pointer-events: none
+			position: absolute
+			left: 65%
+			padding-left: $text-padding
+			line-height: $height

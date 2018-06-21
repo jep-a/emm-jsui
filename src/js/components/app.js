@@ -1,28 +1,45 @@
+import Dev from 'mobx-react-devtools'
+
 import {inject, observer} from 'mobx-react'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
-import classnames from 'classnames'
 import React, {Component} from 'react'
 
 import LobbyCard from './lobby-card'
-import LobbyList from './lobby-list'
-import PrototypeList from './prototype-list'
+import LobbyList from './lobbies'
+import LobbySettings from './lobby-settings'
+import NavBar from './nav'
+import PrototypeList from './prototypes'
 
-@inject('store')
-@observer
-export default class AppComponent extends Component {
+@inject('store') @observer export default class AppComponent extends Component {
 	render() {
+		const {
+			view: {showLobbySettings},
+			prototypes: {array: prototypes},
+			lobbies: {
+				array: lobbies,
+				expanded: expandedLobby,
+				hosting: hostingLobby
+			}
+		} = this.props.store
+
 		return (
-			<section id="lobbies-page" className={classnames('page', 'clear-fix', {'extended': this.props.store.expandedLobby})}>
-				<PrototypeList prototypes={this.props.store.prototypes}/>
-				<LobbyList lobbies={this.props.store.lobbyArray}/>
-				<TransitionGroup component={null}>
-					{this.props.store.expandedLobby &&
-						<CSSTransition key={this.props.store.expandedLobby.id} timeout={200} classNames="column">
-							<LobbyCard key={this.props.store.expandedLobby.id} lobby={this.props.store.expandedLobby}/>
-						</CSSTransition>
+			<main>
+				<NavBar/>
+				<div className="page clear-fix">
+					{!showLobbySettings && [
+						<PrototypeList key="prototypes" prototypes={prototypes}/>,
+						<LobbyList key="lobbies" lobbies={lobbies}/>
+					]}
+
+					{expandedLobby &&
+						<LobbyCard key={`lobby-card-${expandedLobby.id}`} lobby={expandedLobby}/>
 					}
-				</TransitionGroup>
-			</section>
+
+					{hostingLobby && showLobbySettings &&
+						<LobbySettings key={`lobby-settings-${hostingLobby.id}`} lobby={hostingLobby}/>
+					}
+				</div>
+				{/* <Dev/> */}
+			</main>
 		)
 	}
 }
