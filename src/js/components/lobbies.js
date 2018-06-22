@@ -1,4 +1,3 @@
-import {trace} from 'mobx'
 import {inject, observer} from 'mobx-react'
 import autobind from 'autobind-decorator'
 import classnames from 'classnames'
@@ -59,11 +58,11 @@ import SVG from 'react-inlinesvg'
 @observer export default class LobbyListContainer extends Component {
 	render() {
 		const {lobbies} = this.props
-		const {length} = lobbies
+		const 
 
 		return (
 			<section className="lobbies-column column">
-				<h1 className="column-title">{`${length > 0 ? length : 'no'} active lobbies`}</h1>
+				<h1 className="column-title">{`${length > 0 ? length : 'no'} active lobb${length == 1 ? 'y' : 'ies'}`}</h1>
 				<div className="column-body">
 					<header className="column-label clear-fix">
 						<span className="lobbies-list-prototype-column lobbies-list-column">type</span>
