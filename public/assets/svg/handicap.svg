@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" class="icon-svg" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-<style type="text/css">
-	.icon-svg-path{fill:none;stroke:#FFFFFF;stroke-width:3.427;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.icon-svg-path.filled{fill:#FFFFFF;}
-</style>
-<path class="icon-svg-path" d="M10.645,19.597c-0.832,0.751-1.19,1.832-0.972,3.015c0.335,1.812,2.075,3.01,3.888,2.675
-	c0.677-0.125,1.507-0.564,2-1.26"/>
-<polyline class="icon-svg-path" points="20.191,25.115 18.82,20.865 14.444,17.932 16.289,11.335 "/>
-<polyline class="icon-svg-path" points="10.507,15.769 10.507,12.754 16.289,11.335 19.127,15.769 21.26,14.88 "/>
-<circle class="icon-svg-path filled" cx="18.878" cy="7.287" r="0.954"/>
-<circle class="icon-svg-path" cx="16" cy="16" r="13.953"/>
-<line class="icon-svg-path" x1="28.867" y1="3.133" x2="26.294" y2="5.706"/>
-<line class="icon-svg-path" x1="5.706" y1="26.294" x2="3.133" y2="28.867"/>
-<line class="icon-svg-path" x1="28.867" y1="28.867" x2="26.294" y2="26.294"/>
-<line class="icon-svg-path" x1="5.706" y1="5.706" x2="3.133" y2="3.133"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="outline" d="M10.65,19.6a3.16,3.16,0,0,0-1,3A3.3,3.3,0,0,0,15.56,24"/><polyline class="outline" points="20.19 25.11 18.82 20.86 14.44 17.93 16.29 11.34"/><polyline class="outline" points="10.51 15.77 10.51 12.75 16.29 11.34 19.13 15.77 21.26 14.88"/><circle class="outline" cx="18.88" cy="7.29" r="0.95"/><circle class="outline" cx="16" cy="16" r="13.95" transform="translate(-6.63 16) rotate(-45)"/><line class="outline" x1="28.87" y1="3.13" x2="26.29" y2="5.71"/><line class="outline" x1="5.71" y1="26.29" x2="3.13" y2="28.87"/><line class="outline" x1="28.87" y1="28.87" x2="26.29" y2="26.29"/><line class="outline" x1="5.71" y1="5.71" x2="3.13" y2="3.13"/></svg>

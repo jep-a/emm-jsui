@@ -44,8 +44,8 @@ export default class Prototype {
 
 		stylesheet.insertRule(
 			[
-				`.prototype-row${prototypeSelector}:hover .icon-svg-path`,
-				`.lobby-row${prototypeSelector}:hover .icon-svg-path`
+				`.prototype-row${prototypeSelector}:hover svg .outline`,
+				`.lobby-row${prototypeSelector}:hover svg .outline`
 			], {
 				'stroke': this.color
 			}
