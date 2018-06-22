@@ -91,16 +91,14 @@
 		width: $height
 		text-align: center
 		line-height: $height
-		transform: rotateX(180deg)
-		-webkit-transform: rotateX(180deg)
 
-		&::before
-			content: "ヘ"
+		svg
+			+icon
 			opacity: 0.125
 			transition: opacity $transition-ease
 			-webkit-transition: opacity $transition-ease
 
-		&.true::before
+		&.true svg
 			opacity: 1
 
 	&-time

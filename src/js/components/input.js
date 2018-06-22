@@ -1,6 +1,7 @@
 import autobind from 'autobind-decorator'
 import classnames from 'classnames'
 import React, {Component} from 'react'
+import SVG from 'react-inlinesvg'
 
 const InputWrapper = props => (
 	<div onClick={props.onClick} className={classnames('input', 'clear-fix', props.className)}>
@@ -38,9 +39,11 @@ export class CheckboxInput extends Input {
 	}
 
 	render() {
+		const className = classnames('input-checkbox-checkbox', 'input-value', {'true': this.state.value})
+
 		return (
 			<InputWrapper onClick={this.handleClick} label={this.props.label} className="input-checkbox">
-				<span className={classnames('input-checkbox-checkbox', 'input-value', {'true': this.state.value})}></span>
+				<SVG cacheGetRequests={true} src="assets/svg/check.svg" className={className}/>
 			</InputWrapper>
 		)
 	}
