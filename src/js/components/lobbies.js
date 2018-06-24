@@ -58,7 +58,7 @@ import SVG from 'react-inlinesvg'
 @observer export default class LobbyListContainer extends Component {
 	render() {
 		const {lobbies} = this.props
-		const 
+		const {length} = lobbies
 
 		return (
 			<section className="lobbies-column column">

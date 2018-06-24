@@ -20,7 +20,7 @@ import PlayerList from './players'
 	}
 }
 
-@inject('store') @observer export default class LobbyCard extends Component {
+@observer export default class LobbyCard extends Component {
 	render() {
 		const {lobby} = this.props
 		const {
