@@ -6,8 +6,9 @@ $background-color: #2a2a2a
 $text-border-thickness: 2px
 $text-border: $text-border-thickness solid
 $title-border: 3px solid
-$transition-cubic: cubic-bezier(0.13, 0.65, 0.24, 1.01)
+$transition-cubic: cubic-bezier(0, 0.75, 0.25, 1)
 $transition-ease: 0.2s $transition-cubic
+$transition-ease-slow: 0.4s $transition-cubic
 
 =checkered
 	$background-color: rgba(#808080, 1)
@@ -195,8 +196,8 @@ svg
 		opacity: 1
 
 	&-enter-active
-		transition: opacity 0.5s $transition-cubic
-		-webkit-transition: opacity 0.5s $transition-cubic
+		transition: opacity $transition-ease-slow
+		-webkit-transition: opacity $transition-ease-slow
 
 .nav-bar
 	display: inline-block

@@ -52,4 +52,16 @@
 			padding-top: $text-padding/2
 			border-bottom: $text-border
 
+.protos-lobbies
+	display: inline-block
+
+	&-enter,
+	&-exit
+		opacity: 0
+		transition: opacity $transition-ease-slow
+		-webkit-transition: opacity $transition-ease-slow
+
+	&-enter-active
+		opacity: 1
+
 @import 'prototypes', 'lobbies', 'lobby-card', 'players'

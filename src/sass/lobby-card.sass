@@ -3,8 +3,14 @@
 		display: inline-block
 		width: auto
 
-		&.extended
-			width: $column-width * 2
+	&-enter,
+	&-exit
+		opacity: 0
+		transition: opacity $transition-ease
+		-webkit-transition: opacity $transition-ease
+
+	&-enter-active
+		opacity: 1
 
 	&-prototype
 		$height: 64px
@@ -38,8 +44,18 @@
 		&:hover
 			color: rgba(#ffffff, 0.5)
 
-.lobby-settings-column
-	width: auto
+.lobby-settings
+	&-column
+		width: auto
+
+	&-enter,
+	&-exit
+		opacity: 0
+		transition: opacity $transition-ease-slow
+		-webkit-transition: opacity $transition-ease-slow
+
+	&-enter-active
+		opacity: 1
 
 .mod-category
 	&-column
