@@ -2,12 +2,12 @@
 	&-column
 		display: inline-block
 		width: auto
+		transition: opacity $transition-ease
+		-webkit-transition: opacity $transition-ease
 
 	&-enter,
 	&-exit
 		opacity: 0
-		transition: opacity $transition-ease
-		-webkit-transition: opacity $transition-ease
 
 	&-enter-active
 		opacity: 1
@@ -47,12 +47,12 @@
 .lobby-settings
 	&-column
 		width: auto
+		transition: opacity $transition-ease-slow
+		-webkit-transition: opacity $transition-ease-slow
 
 	&-enter,
 	&-exit
 		opacity: 0
-		transition: opacity $transition-ease-slow
-		-webkit-transition: opacity $transition-ease-slow
 
 	&-enter-active
 		opacity: 1

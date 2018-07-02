@@ -54,12 +54,12 @@
 
 .protos-lobbies
 	display: inline-block
+	transition: opacity $transition-ease-slow
+	-webkit-transition: opacity $transition-ease-slow
 
 	&-enter,
 	&-exit
 		opacity: 0
-		transition: opacity $transition-ease-slow
-		-webkit-transition: opacity $transition-ease-slow
 
 	&-enter-active
 		opacity: 1
