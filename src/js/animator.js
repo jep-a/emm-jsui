@@ -50,7 +50,7 @@ export default class Animator {
 
 			window.requestAnimationFrame(() => {
 				pageStyle.webkitTransition = fastTransition
-				pageStyle.transform = ''
+				pageStyle.webkitTransform = ''
 			})
 		})
 	}
@@ -61,14 +61,14 @@ export default class Animator {
 
 		window.requestAnimationFrame(() => {
 			pageStyle.webkitTransition = ''
-			pageStyle.transform = `translate3d(-${this.lobbyCardOffset}px, 0, 0)`
+			pageStyle.webkitTransform = `translate3d(-${this.lobbyCardOffset}px, 0, 0)`
 
 			nodeStyle.position = 'absolute'
 			nodeStyle.left = `${this.lobbyCardLeft + this.lobbyCardOffset}px`
 
 			window.requestAnimationFrame(() => {
 				pageStyle.webkitTransition = fastTransition
-				pageStyle.transform = ''
+				pageStyle.webkitTransform = ''
 			})
 		})
 	}
