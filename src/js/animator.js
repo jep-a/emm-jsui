@@ -42,7 +42,7 @@ export default class Animator {
 		this.protosLobbies = node
 		this.updateProtosLobbiesLeft()
 
-		delete this.protosLobbiesEnter
+		this.protosLobbiesEnter = undefined
 	}
 
 	@autobind protosLobbiesExit(node) {
