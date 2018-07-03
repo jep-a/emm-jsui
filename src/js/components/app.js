@@ -52,7 +52,9 @@ const LobbyCardTransition = props => <CSSTransition classNames="lobby-card" time
 							<CSSTransition
 								key="protos-lobbies"
 								classNames="protos-lobbies"
+								appear={true}
 								timeout={timeouts.protosLobbies}
+								onEnter={animator.protosLobbiesEnter}
 								onExit={animator.protosLobbiesExit}
 							>
 								<div className="protos-lobbies">
