@@ -40,9 +40,10 @@ export default class Animator {
 
 	@autobind protosLobbiesEnter(node) {
 		this.protosLobbies = node
-		this.updateProtosLobbiesLeft()
 
-		this.protosLobbiesEnter = undefined
+		if (!this.protosLobbiesLeft) {
+			this.updateProtosLobbiesLeft()
+		}
 	}
 
 	@autobind protosLobbiesExit(node) {
