@@ -1,0 +1,79 @@
+.lobby-settings
+	&-column
+		width: auto
+
+.mod-category
+	&-column
+		background: $background-color
+
+	&-label
+		padding-bottom: $text-padding/2
+
+		&::after
+			display: none
+
+.input
+	+dark-divider
+	$height: 48px
+	overflow: hidden
+	position: relative
+	height: $height
+
+	input
+		padding-bottom: 4px
+		text-indent: $text-padding
+
+	&-label,
+	&-value
+		display: inline-block
+
+	&-label
+		+input-label-font
+		float: left
+		padding-left: $text-padding
+		line-height: $height
+
+	&-value
+		float: right
+		width: 50%
+		height: 100%
+		background: rgba(#000000, 0.25)
+
+	&-checkbox-checkbox
+		cursor: pointer
+		float: right
+		width: $height
+		text-align: center
+		line-height: $height
+
+		svg
+			+icon
+			opacity: 0.125
+			transform: translateY(-2px)
+			-webkit-transform: translate(0, -2px)
+			transition: opacity $transition-ease
+			-webkit-transition: opacity $transition-ease
+
+		&.true svg
+			opacity: 1
+
+	&-time
+		.input-label
+			width: 65%
+
+		&-input,
+		&-display
+			width: 35%
+			
+		&-input,
+		&-input::selection
+			color: rgba(#ffffff, 0)
+			background-color: rgba(#ffffff, 0)
+
+		&-display
+			+text-font
+			pointer-events: none
+			position: absolute
+			left: 65%
+			padding-left: $text-padding
+			line-height: $height
