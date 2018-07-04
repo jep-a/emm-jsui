@@ -2,15 +2,6 @@
 	&-column
 		display: inline-block
 		width: auto
-		transition: opacity $transition-ease
-		-webkit-transition: opacity $transition-ease
-
-	&-enter,
-	&-exit
-		opacity: 0
-
-	&-enter-active
-		opacity: 1
 
 	&-prototype
 		$height: 64px
@@ -47,15 +38,6 @@
 .lobby-settings
 	&-column
 		width: auto
-		transition: opacity $transition-ease-slow
-		-webkit-transition: opacity $transition-ease-slow
-
-	&-enter,
-	&-exit
-		opacity: 0
-
-	&-enter-active
-		opacity: 1
 
 .mod-category
 	&-column
@@ -73,14 +55,7 @@
 	overflow: hidden
 	position: relative
 	height: $height
-	transition: height $transition-ease, opacity $transition-ease
-	-webkit-transition: height $transition-ease, opacity $transition-ease
 
-	&-enter:not(&-enter-active),
-	&-exit-active
-		height: 0
-		opacity: 0
-	
 	input
 		padding-bottom: 4px
 		text-indent: $text-padding

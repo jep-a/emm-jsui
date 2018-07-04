@@ -7,13 +7,6 @@
 		+nowrap
 		position: relative
 		padding: (($text-padding/2) + 4) $text-padding
-		transition: margin-bottom $transition-ease, opacity $transition-ease
-		-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease
-
-		&-enter:not(&-enter-active),
-		&-exit-active
-			margin-bottom: calc((#{(($text-padding/2) + 4) * 2} + #{$player-font-size + 4}) * -1)
-			opacity: 0
 
 		&::before
 			position: absolute

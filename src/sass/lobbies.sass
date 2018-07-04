@@ -35,8 +35,8 @@
 	position: relative
 	padding: ($text-padding - 10) $text-padding 0
 	cursor: pointer
-	transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
-	-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
+	transition: opacity $transition-ease, color $transition-ease, background-color $transition-ease
+	-webkit-transition: opacity $transition-ease, color $transition-ease, background-color $transition-ease
 
 	&.selected
 		background-color: rgba(#ffffff, 0.075)
@@ -66,8 +66,3 @@
 	.icon-svg-path
 		transition: stroke $transition-ease
 		-webkit-transition: stroke $transition-ease
-
-	&-enter:not(&-enter-active),
-	&-exit-active
-		margin-bottom: -($text-padding + (($text-padding - 10) * 2) + $text-border-thickness)
-		opacity: 0
