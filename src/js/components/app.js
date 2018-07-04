@@ -14,7 +14,7 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 
 @inject('store') @observer export default class AppComponent extends Component {
 	page = React.createRef()
-	animator = window.a = new Animator(this.page)
+	animator = new Animator(this.page)
 
 	render() {
 		const {
