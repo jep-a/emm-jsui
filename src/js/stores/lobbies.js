@@ -115,6 +115,7 @@ export default class LobbyStore {
 
 	@action clearCurrent() {
 		this.current = null
+		this.root.view.toggleLobbySettings(false)
 	}
 
 	@action setSelected(id) {
