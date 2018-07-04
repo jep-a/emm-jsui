@@ -1,7 +1,7 @@
 import autobind from 'autobind-decorator'
 
-const fastTransition = '-webkit-transform 0.2s cubic-bezier(0.6, 0.1, 0.4, 0.9)'
-const slowTransition = '-webkit-transform 0.5s cubic-bezier(0.6, 0.1, 0.4, 0.9)'
+const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.65, 0.35, 1)'
+const slowTransition = '-webkit-transform 0.5s cubic-bezier(0.5, 0, 0.25, 1)'
 
 function offsetLeft(node) {
 	return node.offsetLeft - parseInt(window.getComputedStyle(node).marginLeft)
@@ -12,12 +12,12 @@ function offsetWidth(node) {
 	return node.offsetWidth + parseInt(compStyle.marginLeft) + parseInt(compStyle.marginRight)
 }
 
-export default class Animator {
-	static timeouts = {
-		protosLobbies: 500,
-		lobbyCard: 200
-	}
+export const timeouts = {
+	protosLobbies: 400,
+	lobbyCard: 200
+}
 
+export default class Animator {
 	constructor(page) {
 		this.page = page
 	}

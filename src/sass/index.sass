@@ -82,19 +82,21 @@ svg
 		content: ""
 		border-bottom: $text-border
 
-.fade,
-.fade-slow
+.fade
 	&-enter:not(&-enter-active),
 	&-exit-active
 		opacity: 0
 
-.fade
 	&-enter-active,
 	&-exit-active
 		transition: opacity $transition-ease
 		-webkit-transition: opacity $transition-ease
 
 .fade-slow
+	&-enter:not(&-enter-active),
+	&-exit-active
+		opacity: 0
+
 	&-enter-active,
 	&-exit-active
 		transition: opacity $transition-ease-slow
