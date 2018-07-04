@@ -1,7 +1,7 @@
 import autobind from 'autobind-decorator'
 
 const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.65, 0.35, 1)'
-const slowTransition = '-webkit-transform 0.5s cubic-bezier(0.5, 0, 0.25, 1)'
+const slowTransition = '-webkit-transform 0.4s cubic-bezier(0.5, 0, 0.25, 1)'
 
 function offsetLeft(node) {
 	return node.offsetLeft - parseInt(window.getComputedStyle(node).marginLeft)
