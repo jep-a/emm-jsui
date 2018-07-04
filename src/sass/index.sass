@@ -164,11 +164,6 @@ svg
 	clear: both
 	content: ""
 
-.scale-invert
-	overflow: hidden
-	display: inline-block
-	vertical-align: top
-
 .underline
 	position: relative
 
@@ -180,6 +175,24 @@ svg
 		height: 0
 		content: ""
 		border-bottom: $text-border
+
+.fade,
+.fade-slow
+	&-enter:not(&-enter-active),
+	&-exit-active
+		opacity: 0
+
+.fade
+	&-enter-active,
+	&-exit-active
+		transition: opacity $transition-ease
+		-webkit-transition: opacity $transition-ease
+
+.fade-slow
+	&-enter-active,
+	&-exit-active
+		transition: opacity $transition-ease-slow
+		-webkit-transition: opacity $transition-ease-slow
 
 .badge
 	+badge-font
