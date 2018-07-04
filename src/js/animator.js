@@ -1,6 +1,6 @@
 import autobind from 'autobind-decorator'
 
-const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.65, 0.35, 1)'
+const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.5, 0.35, 1)'
 const slowTransition = '-webkit-transform 0.4s cubic-bezier(0.5, 0, 0.25, 1)'
 
 function offsetLeft(node) {
@@ -9,6 +9,7 @@ function offsetLeft(node) {
 
 function offsetWidth(node) {
 	const compStyle = window.getComputedStyle(node)
+
 	return node.offsetWidth + parseInt(compStyle.marginLeft) + parseInt(compStyle.marginRight)
 }
 
@@ -38,6 +39,20 @@ export default class Animator {
 		return this.lobbyCardLeft - oldLeft
 	}
 
+	requestTransformFrame(transform, transition) {
+		const pageStyle = this.page.current.style
+
+		window.requestAnimationFrame(() => {
+			pageStyle.webkitTransition = ''
+			pageStyle.webkitTransform = transform
+
+			window.requestAnimationFrame(() => {
+				pageStyle.webkitTransition = transition
+				pageStyle.webkitTransform = ''
+			});
+		});
+	}
+
 	@autobind protosLobbiesEnter(node) {
 		this.protosLobbies = node
 
@@ -58,18 +73,7 @@ export default class Animator {
 		this.lobbyCard = node
 		this.updateLobbyCardLeft()
 		this.lobbyCardOffset = this.updateProtosLobbiesLeft()
-
-		const pageStyle = this.page.current.style
-
-		window.requestAnimationFrame(() => {
-			pageStyle.webkitTransition = ''
-			pageStyle.webkitTransform = `translate3d(${-this.lobbyCardOffset}px, 0, 0)`
-
-			window.requestAnimationFrame(() => {
-				pageStyle.webkitTransition = fastTransition
-				pageStyle.webkitTransform = ''
-			})
-		})
+		this.requestTransformFrame(`translate3d(${-this.lobbyCardOffset}px, 0, 0)`, fastTransition)
 	}
 
 	@autobind lobbyCardExit(node) {
@@ -77,18 +81,7 @@ export default class Animator {
 		node.style.left = `${this.lobbyCardLeft - this.lobbyCardOffset}px`
 
 		this.updateProtosLobbiesLeft()
-
-		const pageStyle = this.page.current.style
-
-		window.requestAnimationFrame(() => {
-			pageStyle.webkitTransition = ''
-			pageStyle.webkitTransform = `translate3d(${this.lobbyCardOffset}px, 0, 0)`
-
-			window.requestAnimationFrame(() => {
-				pageStyle.webkitTransition = fastTransition
-				pageStyle.webkitTransform = ''
-			})
-		})
+		this.requestTransformFrame(`translate3d(${this.lobbyCardOffset}px, 0, 0)`, fastTransition)
 	}
 
 	@autobind lobbyCardSwitch(node) {
@@ -100,18 +93,7 @@ export default class Animator {
 		this.lobbySettings = node
 		this.lobbySettingsLeft = offsetLeft(node)
 		this.lobbySettingsWidth = offsetWidth(node)
-
-		const pageStyle = this.page.current.style
-
-		window.requestAnimationFrame(() => {
-			pageStyle.webkitTransition = ''
-			pageStyle.webkitTransform = `translate3d(${-this.lobbySettingsOffset}px, 0, 0)`
-
-			window.requestAnimationFrame(() => {
-				pageStyle.webkitTransition = slowTransition
-				pageStyle.webkitTransform = ''
-			})
-		})
+		this.requestTransformFrame(`translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
 	}
 
 	@autobind lobbySettingsExit(node) {
@@ -120,17 +102,6 @@ export default class Animator {
 		node.style.width = `${this.lobbySettingsWidth}px`
 
 		this.updateLobbyCardLeft()
-
-		const pageStyle = this.page.current.style
-
-		window.requestAnimationFrame(() => {
-			pageStyle.webkitTransition = ''
-			pageStyle.webkitTransform = `translate3d(${this.lobbySettingsOffset}px, 0, 0)`
-
-			window.requestAnimationFrame(() => {
-				pageStyle.webkitTransition = slowTransition
-				pageStyle.webkitTransform = ''
-			})
-		})
+		this.requestTransformFrame(`translate3d(${this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
 	}
 }

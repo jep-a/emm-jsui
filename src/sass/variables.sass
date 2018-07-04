@@ -10,7 +10,9 @@ $text-border-thickness: 2px
 $text-border: $text-border-thickness solid
 $title-border: 3px solid
 
-$transition-cubic: cubic-bezier(0, 0.65, 0.35, 1)
+$transition-time: 0.2s
+$transition-time-slow: 0.4s
+$transition-cubic: cubic-bezier(0, 0.5, 0.35, 1)
 $transition-cubic-slow: cubic-bezier(0.5, 0, 0.25, 1)
-$transition-ease: 0.2s $transition-cubic
-$transition-ease-slow: 0.4s $transition-cubic-slow
+$transition-ease: $transition-time $transition-cubic
+$transition-ease-slow: $transition-time-slow $transition-cubic-slow
