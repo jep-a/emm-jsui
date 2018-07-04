@@ -43,7 +43,15 @@ export default class LobbyStore {
 	}
 
 	@computed get expanded() {
-		return this.selected || this.current
+		let expanded
+
+		if (this.root.view.showLobbySettings) {
+			expanded = this.hosting
+		} else {
+			expanded = this.selected || this.current
+		}
+
+		return expanded
 	}
 
 	@computed get hosting() {
