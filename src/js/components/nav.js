@@ -46,7 +46,7 @@ import React, {Component} from 'react'
 			<nav className="nav-bar">
 				<NavEntry key="nav-lobbies" handleClick={this.hideLobbySettings} current={!showLobbySettings} label="lobbies"/>
 
-				{lobbies.hosting &&
+				{lobbies.hosting && lobbies.hosting.selected &&
 					<NavEntry key="nav-lobby-settings" handleClick={this.showLobbySettings} current={showLobbySettings} label="lobby settings"/>
 				}
 

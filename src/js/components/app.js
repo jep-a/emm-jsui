@@ -67,7 +67,7 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 						{expandedLobby &&
 							<LobbyCardTransition key={'lobby-card'} onEnter={animator.lobbyCardEnter} onExit={animator.lobbyCardExit}>
 								<TransitionGroup component={null}>
-									<LobbyCardTransition key={expandedLobbyKey} onExit={animator.lobbyCardSwitch}>
+									<LobbyCardTransition key={expandedLobbyKey} onEnter={animator.lobbyCardSwitchEnter} onExit={animator.lobbyCardSwitchExit}>
 										<LobbyCard key={expandedLobbyKey} lobby={expandedLobby}/>
 									</LobbyCardTransition>
 								</TransitionGroup>

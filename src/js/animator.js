@@ -4,7 +4,7 @@ const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.5, 0.35, 1)'
 const slowTransition = '-webkit-transform 0.4s cubic-bezier(0.5, 0, 0.25, 1)'
 
 function offsetLeft(node) {
-	return node.offsetLeft - parseInt(window.getComputedStyle(node).marginLeft)
+	return node.offsetLeft - (parseInt(window.getComputedStyle(node).marginLeft) || 0)
 }
 
 function offsetWidth(node) {
@@ -84,9 +84,13 @@ export default class Animator {
 		this.requestTransformFrame(`translate3d(${this.lobbyCardOffset}px, 0, 0)`, fastTransition)
 	}
 
-	@autobind lobbyCardSwitch(node) {
+	@autobind lobbyCardSwitchEnter(node) {
+		this.lobbyCard = node
+	}
+
+	@autobind lobbyCardSwitchExit(node) {
 		node.style.position = 'absolute'
-		node.style.left = `${this.lobbyCardLeft}px`
+		node.style.left = `${offsetLeft(this.lobbyCard)}px`
 	}
 
 	@autobind lobbySettingsEnter(node) {
