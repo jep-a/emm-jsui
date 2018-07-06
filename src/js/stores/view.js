@@ -1,4 +1,4 @@
-import {observable, computed, action} from 'mobx'
+import {observable, observe, computed, action} from 'mobx'
 
 export default class ViewStore {
 	@observable showLobbySettings
@@ -9,6 +9,8 @@ export default class ViewStore {
 	) {
 		this.root = root
 		this.showLobbySettings = showLobbySettings
+
+		observe(this, 'showLobbySettings', root.animator.handleToggleLobbySettings)
 	}
 
 	@computed get unsavedChanges() {

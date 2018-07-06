@@ -2,7 +2,7 @@ import {inject, observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import React, {Component} from 'react'
 
-import Animator, {timeouts} from '../animator'
+import {timeouts} from '../animator'
 import LobbyCard from './lobby-card'
 import LobbyList from './lobbies'
 import LobbySettings from './lobby-settings'
@@ -13,17 +13,9 @@ const FadeTransition = ({classNames = 'fade', ...props}) => <CSSTransition class
 const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard} {...props}/>
 
 @inject('store') @observer export default class AppComponent extends Component {
-	page = React.createRef()
-	animator = new Animator(this.page)
-
 	render() {
 		const {
-			page,
 			animator,
-			props
-		} = this
-
-		const {
 			view: {showLobbySettings},
 			prototypes: {array: prototypes},
 			lobbies: {
@@ -31,7 +23,7 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 				expanded: expandedLobby,
 				hosting: hostingLobby
 			}
-		} = props.store
+		} = this.props.store
 
 		let expandedLobbyKey, hostingLobbyKey
 
@@ -46,7 +38,7 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 		return (
 			<main>
 				<NavBar/>
-				<div ref={page} className="page clear-fix">
+				<div ref={animator.pageRef} className="page clear-fix">
 					<TransitionGroup component={null}>
 						{!showLobbySettings &&
 							<FadeTransition
@@ -55,7 +47,6 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 								appear={true}
 								timeout={timeouts.protosLobbies}
 								onEnter={animator.protosLobbiesEnter}
-								onExit={animator.protosLobbiesExit}
 							>
 								<div className="protos-lobbies">
 									<PrototypeList key="prototypes" prototypes={prototypes}/>
@@ -80,7 +71,6 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 								classNames="fade-slow"
 								timeout={timeouts.protosLobbies}
 								onEnter={animator.lobbySettingsEnter}
-								onExit={animator.lobbySettingsExit}
 							>
 								<LobbySettings key={hostingLobbyKey} lobby={hostingLobby}/>
 							</FadeTransition>

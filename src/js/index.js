@@ -8,20 +8,18 @@ import {BrowserEMM, browserStore} from './browser'
 import AppComponent from './components/app'
 import Store from './store'
 import Stylesheet from './stylesheet'
+import Animator from './animator'
 
 const body = document.body
 
 class App {
 	constructor(emm, initStore) {
-		const stylesheet = new Stylesheet
-		const store = new Store(emm, initStore, stylesheet)
-
 		window.app = this
 
 		this.emm = emm
-		this.stylesheet = stylesheet
-		this.store = store
-
+		this.stylesheet = new Stylesheet
+		this.animator = new Animator
+		this.store = new Store(emm, initStore, this.stylesheet, this.animator)
 		this.render()
 	}
 

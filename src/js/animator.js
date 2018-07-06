@@ -1,4 +1,5 @@
 import autobind from 'autobind-decorator'
+import React from 'react'
 
 const fastTransition = '-webkit-transform 0.2s cubic-bezier(0, 0.5, 0.35, 1)'
 const slowTransition = '-webkit-transform 0.4s cubic-bezier(0.5, 0, 0.25, 1)'
@@ -19,9 +20,8 @@ export const timeouts = {
 }
 
 export default class Animator {
-	constructor(page) {
-		this.page = page
-	}
+	pageRef = React.createRef()
+	promises = []
 
 	updateProtosLobbiesLeft() {
 		const oldLeft = this.protosLobbiesLeft
@@ -39,8 +39,12 @@ export default class Animator {
 		return this.lobbyCardLeft - oldLeft
 	}
 
+	waitForNode(nodeName) {
+		return new Promise(resolve => {this.promises[nodeName] = resolve})
+	}
+
 	requestTransformFrame(transform, transition) {
-		const pageStyle = this.page.current.style
+		const pageStyle = this.pageRef.current.style
 
 		window.requestAnimationFrame(() => {
 			pageStyle.webkitTransition = ''
@@ -53,20 +57,48 @@ export default class Animator {
 		});
 	}
 
+	startLobbySettingsEnter() {
+		this.waitForNode('lobbySettings').then(node => {
+			this.protosLobbies.style.position = 'absolute'
+			this.lobbySettingsOffset = this.updateLobbyCardLeft()
+			this.protosLobbies.style.left = `${this.protosLobbiesLeft + this.lobbySettingsOffset}px`
+
+			this.lobbySettingsLeft = offsetLeft(node)
+			this.lobbySettingsWidth = offsetWidth(node)
+
+			this.requestTransformFrame(`translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
+		})
+	}
+
+	startLobbySettingsExit() {
+		this.waitForNode('protosLobbies').then(() => {
+			this.lobbySettings.style.position = 'absolute'
+			this.lobbySettings.style.left = `${this.lobbySettingsLeft - this.lobbySettingsOffset}px`
+			this.lobbySettings.style.width = `${this.lobbySettingsWidth}px`
+
+			this.updateLobbyCardLeft()
+			this.requestTransformFrame(`translate3d(${this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
+		})
+	}
+
+	@autobind handleToggleLobbySettings({newValue}) {
+		if (newValue) {
+			this.startLobbySettingsEnter()
+		} else {
+			this.startLobbySettingsExit()
+		}
+	}
+
 	@autobind protosLobbiesEnter(node) {
 		this.protosLobbies = node
+
+		if (this.promises.protosLobbies) {
+			this.promises.protosLobbies(node)
+		}
 
 		if (!this.protosLobbiesLeft) {
 			this.updateProtosLobbiesLeft()
 		}
-	}
-
-	@autobind protosLobbiesExit(node) {
-		node.style.position = 'absolute'
-
-		this.lobbySettingsOffset = this.updateLobbyCardLeft()
-
-		node.style.left = `${this.protosLobbiesLeft + this.lobbySettingsOffset}px`
 	}
 
 	@autobind lobbyCardEnter(node) {
@@ -95,17 +127,9 @@ export default class Animator {
 
 	@autobind lobbySettingsEnter(node) {
 		this.lobbySettings = node
-		this.lobbySettingsLeft = offsetLeft(node)
-		this.lobbySettingsWidth = offsetWidth(node)
-		this.requestTransformFrame(`translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
-	}
 
-	@autobind lobbySettingsExit(node) {
-		node.style.position = 'absolute'
-		node.style.left = `${this.lobbySettingsLeft - this.lobbySettingsOffset}px`
-		node.style.width = `${this.lobbySettingsWidth}px`
-
-		this.updateLobbyCardLeft()
-		this.requestTransformFrame(`translate3d(${this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
+		if (this.promises.lobbySettings) {
+			this.promises.lobbySettings(node)
+		}
 	}
 }

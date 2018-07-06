@@ -12,10 +12,12 @@ export default class Store {
 			prototypes,
 			lobbies
 		},
-		stylesheet
+		stylesheet,
+		animator
 	) {
 		this.emm = emm
 		this.stylesheet = stylesheet
+		this.animator = animator
 		this.view = new ViewStore(this)
 		this.players = new PlayerStore(this, clientID, players)
 		this.prototypes = new PrototypeStore(this, prototypes)
