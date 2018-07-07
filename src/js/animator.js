@@ -31,14 +31,6 @@ export default class Animator {
 		return this.pageLeft - oldLeft
 	}
 
-	updateProtosLobbiesLeft() {
-		const oldLeft = this.protosLobbiesLeft
-
-		this.protosLobbiesLeft = offsetLeft(this.protosLobbies)
-
-		return this.protosLobbiesLeft - oldLeft
-	}
-
 	updateLobbyCardLeft() {
 		const oldLeft = this.lobbyCardLeft
 
@@ -67,7 +59,7 @@ export default class Animator {
 
 	mount() {
 		this.updatePageOffset()
-		this.updateProtosLobbiesLeft()
+		this.protosLobbiesLeft = offsetLeft(this.protosLobbies)
 	}
 
 	async startLobbySettingsEnter() {
