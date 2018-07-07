@@ -13,6 +13,10 @@ const FadeTransition = ({classNames = 'fade', ...props}) => <CSSTransition class
 const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard} {...props}/>
 
 @inject('store') @observer export default class AppComponent extends Component {
+	componentDidMount() {
+		this.props.store.animator.mount()
+	}
+
 	render() {
 		const {
 			animator,

@@ -23,6 +23,14 @@ export default class Animator {
 	pageRef = React.createRef()
 	promises = []
 
+	updatePageOffset() {
+		const oldLeft = this.pageLeft
+
+		this.pageLeft = offsetLeft(this.pageRef.current)
+
+		return this.pageLeft - oldLeft
+	}
+
 	updateProtosLobbiesLeft() {
 		const oldLeft = this.protosLobbiesLeft
 
@@ -55,6 +63,11 @@ export default class Animator {
 				pageStyle.webkitTransform = ''
 			});
 		});
+	}
+
+	mount() {
+		this.updatePageOffset()
+		this.updateProtosLobbiesLeft()
 	}
 
 	async startLobbySettingsEnter() {
@@ -95,24 +108,20 @@ export default class Animator {
 		if (this.promises.protosLobbies) {
 			this.promises.protosLobbies(node)
 		}
-
-		if (!this.protosLobbiesLeft) {
-			this.updateProtosLobbiesLeft()
-		}
 	}
 
 	@autobind lobbyCardEnter(node) {
 		this.lobbyCard = node
 		this.updateLobbyCardLeft()
-		this.lobbyCardOffset = this.updateProtosLobbiesLeft()
+		this.lobbyCardOffset = this.updatePageOffset()
 		this.requestTransformFrame(`translate3d(${-this.lobbyCardOffset}px, 0, 0)`, fastTransition)
 	}
 
 	@autobind lobbyCardExit(node) {
 		node.style.position = 'absolute'
-		node.style.left = `${this.lobbyCardLeft - this.lobbyCardOffset}px`
+		node.style.left = `${this.lobbyCardLeft}px`
 
-		this.updateProtosLobbiesLeft()
+		this.updatePageOffset()
 		this.requestTransformFrame(`translate3d(${this.lobbyCardOffset}px, 0, 0)`, fastTransition)
 	}
 
