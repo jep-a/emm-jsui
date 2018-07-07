@@ -57,28 +57,28 @@ export default class Animator {
 		});
 	}
 
-	startLobbySettingsEnter() {
-		this.waitForNode('lobbySettings').then(node => {
-			this.protosLobbies.style.position = 'absolute'
-			this.lobbySettingsOffset = this.updateLobbyCardLeft()
-			this.protosLobbies.style.left = `${this.protosLobbiesLeft + this.lobbySettingsOffset}px`
+	async startLobbySettingsEnter() {
+		await this.waitForNode('lobbySettings')
 
-			this.lobbySettingsLeft = offsetLeft(node)
-			this.lobbySettingsWidth = offsetWidth(node)
+		this.protosLobbies.style.position = 'absolute'
+		this.lobbySettingsOffset = this.updateLobbyCardLeft()
+		this.protosLobbies.style.left = `${this.protosLobbiesLeft + this.lobbySettingsOffset}px`
 
-			this.requestTransformFrame(`translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
-		})
+		this.lobbySettingsLeft = offsetLeft(this.lobbySettings)
+		this.lobbySettingsWidth = offsetWidth(this.lobbySettings)
+
+		this.requestTransformFrame(`translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
 	}
 
-	startLobbySettingsExit() {
-		this.waitForNode('protosLobbies').then(() => {
-			this.lobbySettings.style.position = 'absolute'
-			this.lobbySettings.style.left = `${this.lobbySettingsLeft - this.lobbySettingsOffset}px`
-			this.lobbySettings.style.width = `${this.lobbySettingsWidth}px`
+	async startLobbySettingsExit() {
+		await this.waitForNode('protosLobbies')
 
-			this.updateLobbyCardLeft()
-			this.requestTransformFrame(`translate3d(${this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
-		})
+		this.lobbySettings.style.position = 'absolute'
+		this.lobbySettings.style.left = `${this.lobbySettingsLeft - this.lobbySettingsOffset}px`
+		this.lobbySettings.style.width = `${this.lobbySettingsWidth}px`
+
+		this.updateLobbyCardLeft()
+		this.requestTransformFrame(`translate3d(${this.lobbySettingsOffset}px, 0, 0)`, slowTransition)
 	}
 
 	@autobind handleToggleLobbySettings({newValue}) {
