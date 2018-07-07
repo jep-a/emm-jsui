@@ -1,20 +1,15 @@
 import {observable, computed} from 'mobx'
 
 import Prototype from '../models/prototype'
+import MapStore from './map-store'
 
-export default class PrototypeStore {
-	@observable map = new Map
-
+export default class PrototypeStore extends MapStore {
 	constructor(root, prototypes) {
-		this.root = root
+		super(root)
 
 		for (const id in prototypes) {
 			this.map.set(+id, new Prototype(this, prototypes[id]))
 		}
-	}
-
-	get(id) {
-		return this.map.get(id)
 	}
 
 	@computed get array() {

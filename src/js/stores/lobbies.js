@@ -2,14 +2,14 @@ import {observable, computed, action} from 'mobx'
 
 import Lobby from '../models/lobby'
 import ModifiableStore from './modifiables'
+import MapStore from './map-store'
 
-export default class LobbyStore {
-	@observable map = new Map
+export default class LobbyStore extends MapStore {
 	@observable current
 	@observable selected
 
 	constructor(root, lobbies) {
-		this.root = root
+		super(root)
 
 		for (const id in lobbies) {
 			this.map.set(+id, new Lobby(this, this.denormalize(lobbies[id])))
@@ -32,10 +32,6 @@ export default class LobbyStore {
 		}
 
 		return lobby
-	}
-
-	get(id) {
-		return this.map.get(id)
 	}
 
 	@computed get array() {

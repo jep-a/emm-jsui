@@ -1,22 +1,17 @@
 import {observable, action} from 'mobx'
 
 import Player from '../models/player'
+import MapStore from './map-store'
 
-export default class PlayerStore {
-	@observable map = new Map
-
+export default class PlayerStore extends MapStore {
 	constructor(root, client, players) {
-		this.root = root
+		super(root)
 
 		for (const id in players) {
 			this.map.set(+id, new Player(this, players[id]))
 		}
 
 		this.client = this.map.get(client)
-	}
-
-	get(id) {
-		return this.map.get(id)
 	}
 
 	@action add(json) {
