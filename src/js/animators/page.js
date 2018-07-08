@@ -48,7 +48,6 @@ export default class PageAnimator extends SubAnimator {
 	@autobind lobbyCardEnter(node) {
 		this.registerNode('lobbyCard', node, true)
 		this.lobbyCardOffset = this.updateOffset('page')
-		console.log(this.lobbyCardOffset)
 		this.flashTransform('page', `translate3d(${-this.lobbyCardOffset}px, 0, 0)`, transitions.fast.transition)
 	}
 
