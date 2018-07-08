@@ -4,28 +4,31 @@ import SubAnimator, {transitions} from './sub-animator'
 
 export default class PageAnimator extends SubAnimator {
 	mount({page}) {
-		this.registerNode('page', page.current, true)
+		this.registerNode('page', page.current)
 	}
 
 	async startLobbySettingsEnter() {
+		this.updateOffset('protosLobbies')
+
 		await this.waitForNode('lobbySettings')
 
 		this.setStyle('protosLobbies', {position: 'absolute'})
 
 		this.lobbySettingsOffset = this.updateOffset('lobbyCard')
-		this.lobbySettingsLeft = this.getSavedOffset('lobbySettings')
 		this.lobbySettingsWidth = this.getCurrentWidth('lobbySettings')
 
-		this.setStyle('protosLobbies', {left: `${this.getCurrentOffset('protosLobbies') + this.lobbySettingsOffset}px`})
+		this.setStyle('protosLobbies', {left: `${this.getSavedOffset('protosLobbies') + this.lobbySettingsOffset}px`})
 		this.flashTransform('page', `translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, transitions.slow.transition)
 	}
 
 	async startLobbySettingsExit() {
+		this.updateOffset('lobbySettings')
+
 		await this.waitForNode('protosLobbies')
 
 		this.setStyle('lobbySettings', {
 			position: 'absolute',
-			left: `${this.lobbySettingsLeft - this.lobbySettingsOffset}px`,
+			left: `${this.getSavedOffset('lobbySettings') - this.lobbySettingsOffset}px`,
 			width: `${this.lobbySettingsWidth}px`
 		})
 
@@ -42,11 +45,11 @@ export default class PageAnimator extends SubAnimator {
 	}
 
 	@autobind protosLobbiesEnter(node) {
-		this.registerNode('protosLobbies', node, true)
+		this.registerNode('protosLobbies', node)
 	}
 
 	@autobind lobbyCardEnter(node) {
-		this.registerNode('lobbyCard', node, true)
+		this.registerNode('lobbyCard', node)
 		this.lobbyCardOffset = this.updateOffset('page')
 		this.lobbyCardLeft = this.getSavedOffset('lobbyCard')
 		this.flashTransform('page', `translate3d(${-this.lobbyCardOffset}px, 0, 0)`, transitions.fast.transition)

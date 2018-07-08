@@ -22,17 +22,14 @@ function offsetWidth(node) {
 export default class SubAnimator {
 	nodes = {}
 
-	registerNode(nodeName, node, saveOffset = false) {
+	registerNode(nodeName, node) {
 		if (!this.nodes[nodeName]) {
 			this.nodes[nodeName] = {}
 		}
 
 		this.nodes[nodeName].node = node
 		this.resolveNode(nodeName, node)
-
-		if (saveOffset) {
-			this.updateOffset(nodeName)
-		}
+		this.updateOffset(nodeName)
 	}
 
 	getNode(nodeName) {
