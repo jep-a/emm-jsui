@@ -1,16 +1,14 @@
 import {inject, observer} from 'mobx-react'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import {TransitionGroup} from 'react-transition-group'
 import React, {Component} from 'react'
 
 import {transitions} from '../animators/sub-animator'
+import FadeTransition from './transition'
 import LobbyCard from './lobby-card'
 import LobbyList from './lobbies'
 import LobbySettings from './lobby-settings'
 import NavBar from './nav'
 import PrototypeList from './prototypes'
-
-const FadeTransition = ({classNames = 'fade', ...props}) => <CSSTransition classNames={classNames} {...props}/>
-const LobbyCardTransition = props => <FadeTransition timeout={transitions.fast.timeout} {...props}/>
 
 @inject('store') @observer export default class AppComponent extends Component {
 	pageRef = React.createRef()
@@ -62,13 +60,13 @@ const LobbyCardTransition = props => <FadeTransition timeout={transitions.fast.t
 						}
 
 						{expandedLobby &&
-							<LobbyCardTransition key={'lobby-card'} onEnter={animator.lobbyCardEnter} onExit={animator.lobbyCardExit}>
+							<FadeTransition key={'lobby-card'} onEnter={animator.lobbyCardEnter} onExit={animator.lobbyCardExit}>
 								<TransitionGroup component={null}>
-									<LobbyCardTransition key={expandedLobbyKey} onEnter={animator.lobbyCardSwitchEnter} onExit={animator.lobbyCardSwitchExit}>
+									<FadeTransition key={expandedLobbyKey} onEnter={animator.lobbyCardSwitchEnter} onExit={animator.lobbyCardSwitchExit}>
 										<LobbyCard key={expandedLobbyKey} lobby={expandedLobby}/>
-									</LobbyCardTransition>
+									</FadeTransition>
 								</TransitionGroup>
-							</LobbyCardTransition>
+							</FadeTransition>
 						}
 
 						{hostingLobby && showLobbySettings &&
