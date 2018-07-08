@@ -10,7 +10,7 @@ export default class ViewStore {
 		this.root = root
 		this.showLobbySettings = showLobbySettings
 
-		observe(this, 'showLobbySettings', root.animator.handleToggleLobbySettings)
+		observe(this, 'showLobbySettings', root.animator.page.handleToggleLobbySettings)
 	}
 
 	@computed get unsavedChanges() {

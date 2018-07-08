@@ -2,7 +2,7 @@ import {inject, observer} from 'mobx-react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import React, {Component} from 'react'
 
-import {timeouts} from '../animator'
+import {transitions} from '../animators/sub-animator'
 import LobbyCard from './lobby-card'
 import LobbyList from './lobbies'
 import LobbySettings from './lobby-settings'
@@ -10,16 +10,18 @@ import NavBar from './nav'
 import PrototypeList from './prototypes'
 
 const FadeTransition = ({classNames = 'fade', ...props}) => <CSSTransition classNames={classNames} {...props}/>
-const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard} {...props}/>
+const LobbyCardTransition = props => <FadeTransition timeout={transitions.fast.timeout} {...props}/>
 
 @inject('store') @observer export default class AppComponent extends Component {
+	pageRef = React.createRef()
+
 	componentDidMount() {
-		this.props.store.animator.mount()
+		this.props.store.animator.page.mount({page: this.pageRef})
 	}
 
 	render() {
 		const {
-			animator,
+			animator: {page: animator},
 			view: {showLobbySettings},
 			prototypes: {array: prototypes},
 			lobbies: {
@@ -42,14 +44,14 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 		return (
 			<main>
 				<NavBar/>
-				<div ref={animator.pageRef} className="page clear-fix">
+				<div ref={this.pageRef} className="page clear-fix">
 					<TransitionGroup component={null}>
 						{!showLobbySettings &&
 							<FadeTransition
 								key="protos-lobbies"
 								classNames="fade-slow"
 								appear={true}
-								timeout={timeouts.protosLobbies}
+								timeout={transitions.slow.timeout}
 								onEnter={animator.protosLobbiesEnter}
 							>
 								<div className="protos-lobbies">
@@ -73,7 +75,7 @@ const LobbyCardTransition = props => <FadeTransition timeout={timeouts.lobbyCard
 							<FadeTransition
 								key={hostingLobbyKey}
 								classNames="fade-slow"
-								timeout={timeouts.protosLobbies}
+								timeout={transitions.slow.timeout}
 								onEnter={animator.lobbySettingsEnter}
 							>
 								<LobbySettings key={hostingLobbyKey} lobby={hostingLobby}/>
