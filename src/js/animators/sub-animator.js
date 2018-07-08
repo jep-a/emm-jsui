@@ -36,6 +36,19 @@ export default class SubAnimator {
 		return this.nodes[nodeName].node
 	}
 
+	hasNode(nodeName) {
+		const node = this.nodes[nodeName]
+		let hasNode
+
+		if (node && node.node) {
+			hasNode = true
+		} else {
+			hasNode = false
+		}
+
+		return hasNode
+	}
+
 	waitForNode(nodeName) {
 		if (!this.nodes[nodeName]) {
 			this.nodes[nodeName] = {}

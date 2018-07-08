@@ -8,6 +8,12 @@ export default class PageAnimator extends SubAnimator {
 	}
 
 	async startLobbySettingsEnter() {
+		this.setStyle('page', {transition: ''})
+
+		if (this.hasNode('lobbySettings')) {
+			this.setStyle('lobbySettings', {position: '', left: ''})
+		}
+
 		this.updateOffset('protosLobbies')
 
 		await this.waitForNode('lobbySettings')
@@ -22,6 +28,12 @@ export default class PageAnimator extends SubAnimator {
 	}
 
 	async startLobbySettingsExit() {
+		this.setStyle('page', {transition: ''})
+
+		if (this.hasNode('protosLobbies')) {
+			this.setStyle('protosLobbies', {position: '', left: ''})
+		}
+	
 		this.updateOffset('lobbySettings')
 
 		await this.waitForNode('protosLobbies')
