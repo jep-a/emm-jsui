@@ -13,7 +13,7 @@ export default class PageAnimator extends SubAnimator {
 		this.setStyle('protosLobbies', {position: 'absolute'})
 
 		this.lobbySettingsOffset = this.updateOffset('lobbyCard')
-		this.lobbySettingsLeft = this.getCurrentOffset('lobbySettings')
+		this.lobbySettingsLeft = this.getSavedOffset('lobbySettings')
 		this.lobbySettingsWidth = this.getCurrentWidth('lobbySettings')
 
 		this.setStyle('protosLobbies', {left: `${this.getCurrentOffset('protosLobbies') + this.lobbySettingsOffset}px`})
@@ -48,6 +48,7 @@ export default class PageAnimator extends SubAnimator {
 	@autobind lobbyCardEnter(node) {
 		this.registerNode('lobbyCard', node, true)
 		this.lobbyCardOffset = this.updateOffset('page')
+		this.lobbyCardLeft = this.getSavedOffset('lobbyCard')
 		this.flashTransform('page', `translate3d(${-this.lobbyCardOffset}px, 0, 0)`, transitions.fast.transition)
 	}
 

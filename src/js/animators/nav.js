@@ -11,7 +11,7 @@ export default class NavAnimator extends SubAnimator {
 	@autobind lobbySettingsEnter(node) {
 		this.registerNode('lobbySettings', node, true)
 		this.lobbySettingsOffset = this.updateOffset('lobbies')
-		this.lobbySettingsLeft = this.getCurrentOffset('lobbySettings')
+		this.lobbySettingsLeft = this.getSavedOffset('lobbySettings')
 		this.flashTransform('bar', `translate3d(${-this.lobbySettingsOffset}px, 0, 0)`, transitions.fast.transition)
 	}
 
@@ -28,7 +28,7 @@ export default class NavAnimator extends SubAnimator {
 	@autobind saveEnter(node) {
 		this.registerNode('save', node, true)
 		this.saveOffset = this.updateOffset('lobbies')
-		this.saveLeft = this.getCurrentOffset('save')
+		this.saveLeft = this.getSavedOffset('save')
 		this.flashTransform('bar', `translate3d(${-this.saveOffset}px, 0, 0)`, transitions.fast.transition)
 	}
 
