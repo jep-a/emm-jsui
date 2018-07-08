@@ -19,7 +19,7 @@ class App {
 		this.emm = emm
 		this.stylesheet = new Stylesheet
 		this.animator = new Animator
-		this.store = new Store(emm, initStore, this.stylesheet, this.animator)
+		this.store = window.s = new Store(emm, initStore, this.stylesheet, this.animator)
 		this.render()
 	}
 

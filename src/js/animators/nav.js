@@ -24,4 +24,21 @@ export default class NavAnimator extends SubAnimator {
 		this.updateOffset('lobbies')
 		this.flashTransform('bar', `translate3d(${this.lobbySettingsOffset}px, 0, 0)`, transitions.fast.transition)
 	}
+
+	@autobind saveEnter(node) {
+		this.registerNode('save', node, true)
+		this.saveOffset = this.updateOffset('lobbies')
+		this.saveLeft = this.getCurrentOffset('save')
+		this.flashTransform('bar', `translate3d(${-this.saveOffset}px, 0, 0)`, transitions.fast.transition)
+	}
+
+	@autobind saveExit(node) {
+		this.setStyle(node, {
+			position: 'absolute',
+			left: `${this.saveLeft - this.saveOffset}px`
+		})
+
+		this.updateOffset('lobbies')
+		this.flashTransform('bar', `translate3d(${this.saveOffset}px, 0, 0)`, transitions.fast.transition)
+	}
 }

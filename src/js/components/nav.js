@@ -53,25 +53,25 @@ import FadeTransition from './transition'
 	render() {
 		const {
 			animator: {nav: animator},
-			view,
-			lobbies
+			view: {showLobbySettings, unsavedChanges},
+			lobbies: {hosting}
 		} = this.props.store
-
-		const {showLobbySettings, unsavedChanges} = view
 
 		return (
 			<nav ref={this.barRef} className="nav-bar">
 				<TransitionGroup component={null}>
-					<NavEntry ref={this.lobbiesRef} key="nav-lobbies" handleClick={this.hideLobbySettings} current={!showLobbySettings} label="lobbies"/>
+					<NavEntry ref={this.lobbiesRef} key="lobbies" handleClick={this.hideLobbySettings} current={!showLobbySettings} label="lobbies"/>
 
-					{lobbies.hosting && lobbies.hosting.selected &&
-						<FadeTransition key="nav-lobby-settings" onEnter={animator.lobbySettingsEnter} onExit={animator.lobbySettingsExit}>
-							<NavEntry key="nav-lobby-settings" handleClick={this.showLobbySettings} current={showLobbySettings} label="lobby settings"/>
+					{hosting && hosting.selected &&
+						<FadeTransition key="lobby-settings" onEnter={animator.lobbySettingsEnter} onExit={animator.lobbySettingsExit}>
+							<NavEntry key="lobby-settings" handleClick={this.showLobbySettings} current={showLobbySettings} label="lobby settings"/>
 						</FadeTransition>
 					}
 
 					{showLobbySettings && unsavedChanges &&
-						<Save className={`prototype-${lobbies.hosting.prototypeKey}`}/>
+						<FadeTransition key="save" onEnter={animator.saveEnter} onExit={animator.saveExit}>
+							<Save key="save" className={`prototype-${hosting.prototypeKey}`}/>
+						</FadeTransition>
 					}
 				</TransitionGroup>
 			</nav>
