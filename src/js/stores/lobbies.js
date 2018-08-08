@@ -97,7 +97,7 @@ export default class LobbyStore extends MapStore {
 		}
 	}
 
-	@action setLobbyHost(lobbyID, playerID) {
+	@action setHost(lobbyID, playerID) {
 		this.map.get(lobbyID).host = this.root.players.get(playerID)
 	}
 
