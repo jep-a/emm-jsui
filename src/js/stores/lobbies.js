@@ -109,7 +109,7 @@ export default class LobbyStore extends MapStore {
 				this.clearCurrent()
 			}
 
-			lobby.players.splice(lobby.players.indexOf(this.root.players.get(playerID), 1))
+			lobby.players.splice(lobby.players.indexOf(this.root.players.get(playerID), 1), 1)
 		}
 	}
 
