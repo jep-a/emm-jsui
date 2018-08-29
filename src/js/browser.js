@@ -87,31 +87,130 @@ export const browserStore = {
 			id: 1,
 			key: 'bunnyhunt',
 			color: '#f7a1f6',
-			name: 'Bunny Hunt'
+			name: 'Bunny Hunt',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}],
+				['player_classes.*', [
+					['can_walljump', {label: 'can walljump'}],
+					['can_wallslide', {label: 'can wallslide'}],
+					['can_airaccel', {label: 'can air accelerate'}]
+				]]
+			],
+			playerClasses: [
+				['Hunter', {
+					color: {r: 80, g: 100, b: 255}
+				}],
+				['Bunny', {}]
+			]
 		},
 		2: {
 			id: 2,
 			key: 'cloud',
 			color: '#967ed0',
-			name: 'Cloud'
+			name: 'Cloud',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}]
+			]
 		},
 		3: {
 			id: 3,
 			key: 'deathmatch',
 			color: '#ff6363',
-			name: 'Deathmatch'
+			name: 'Deathmatch',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}]
+			]
+
 		},
 		4: {
 			id: 4,
 			key: 'elimination',
 			color: '#ff6421',
-			name: 'Elimination'
+			name: 'Elimination',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}],
+				['player_classes.*', [
+					['can_walljump', {label: 'can walljump'}],
+					['can_wallslide', {label: 'can wallslide'}],
+					['can_airaccel', {label: 'can air accelerate'}]
+				]]
+			],
+			playerClasses: [
+				['Hunter', {}],
+				['Hunted', {
+					color: {r: 106, g: 169, b: 252}
+				}]
+			]
 		},
 		5: {
 			id: 5,
 			key: 'freezetag',
 			color: '#bcecf7',
-			name: 'Freezetag'
+			name: 'Freezetag',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}],
+				['player_classes.*', [
+					['can_walljump', {label: 'can walljump'}],
+					['can_wallslide', {label: 'can wallslide'}],
+					['can_airaccel', {label: 'can air accelerate'}]
+				]]
+			],
+			playerClasses: [
+				['Tagger', {}],
+				['Runner', {
+					color: {r: 250, g: 49, b: 49}
+				}]
+			]
 		},
 		7: {
 			id: 7,
@@ -147,13 +246,28 @@ export const browserStore = {
 			id: 8,
 			key: 'misc',
 			color: '#b9bcff',
-			name: 'Miscellaneous'
-		},
-		10: {
-			id: 10,
-			key: 'tag',
-			color: '#7aff83',
-			name: 'Tag'
+			name: 'Miscellaneous',
+			modifiables: [
+				['states.Playing.time', {
+					prereq: {
+						label: 'unlimited round time',
+						opposite: true,
+						override: 0
+					},
+					label: 'round time',
+					type: 'time',
+					default: 500,
+					min: 5
+				}],
+				['player_classes.*', [
+					['can_walljump', {label: 'can walljump'}],
+					['can_wallslide', {label: 'can wallslide'}],
+					['can_airaccel', {label: 'can air accelerate'}]
+				]]
+			],
+			playerClasses: [
+				['Player', {}]
+			]
 		}
 	},
 	lobbies: {
