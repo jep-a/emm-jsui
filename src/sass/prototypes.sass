@@ -1,15 +1,13 @@
-.prototypes
-	&-body
-		min-height: 80px
-
-	&-list
-		+prototype-font
-		margin: 0
-		padding: 0
-		text-align: center
+.prototypes-list
+	+prototype-font
+	min-height: 80px
+	margin: 0
+	padding: 0
+	text-align: center
 
 .prototype
 	&-row
+		+dark-divider
 		position: relative
 		display: block
 		padding: ($text-padding - 5) 0 ($text-padding + 5)
@@ -17,19 +15,12 @@
 		transition: color $transition-ease
 		-webkit-transition: color $transition-ease
 
-		&::after
-			position: absolute
-			right: 5%
-			bottom: 0
-			width: 90%
-			height: 0
-			content: ""
-			border-bottom: 1px solid rgba(#000000, 0.2)
-
 	&-icon
-		.icon-svg
+		margin-right: 5px
+
+		svg
 			+icon
 
-			&-path
+			.outline
 				transition: stroke $transition-ease
 				-webkit-transition: stroke $transition-ease

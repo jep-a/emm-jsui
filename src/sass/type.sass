@@ -1,0 +1,46 @@
+$main-font: "Roboto", sans-serif
+$secondary-font: "Roboto Mono", sans-serif
+
+$h1-size: 16pt
+$h2-size: 14pt
+$h3-size: 12pt
+$p1-size: 10pt
+$p2-size: 9pt
+
+=title-font
+	font-size: $h1-size
+	font-weight: bold
+
+=label-font
+	text-transform: uppercase
+	font-size: $p2-size
+	font-style: italic
+
+=badge-font
+	display: block
+	padding: 2px 5px
+	border: $text-border
+	font-size: $p1-size
+	font-weight: bold
+	font-style: italic
+	line-height: normal
+
+=input-label-font
+	font-size: $p1-size
+
+=input-text-font
+	font-family: $secondary-font
+	font-size: $p2-size
+
+=prototype-font
+	text-transform: uppercase
+	font-family: $secondary-font
+	font-size: $h3-size
+	font-style: italic
+
+=prototype-font-big
+	+prototype-font
+	font-size: $h2-size
+
+=player-font
+	font-size: $p1-size

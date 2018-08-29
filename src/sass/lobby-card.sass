@@ -1,17 +1,13 @@
 .lobby-card
 	&-column
-		position: absolute
 		display: inline-block
-		margin-left: $page-width
-
-		.browser &
-			margin-left: 0
+		width: auto
 
 	&-prototype
 		$height: 64px
 		height: $height
 
-		&-icon-box
+		.prototype-icon
 			display: block
 			float: left
 			width: $height
@@ -19,22 +15,17 @@
 			text-align: center
 			line-height: $height
 
-			.icon-svg
+			svg
 				+icon-big
 
-				&-path
-					stroke: #ffffff
-
-		&-title
+		.prototype-title
+			+prototype-font-big
+			display: block
 			text-align: center
 			line-height: $height
 
-			.prototype-title
-				+prototype-font-big
-
 	&-switch
 		+prototype-font
-		position: relative
 		padding: ($text-padding - 5) 0 $text-padding + 5
 		cursor: pointer
 		text-align: center

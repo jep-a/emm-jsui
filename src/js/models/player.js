@@ -1,15 +1,36 @@
 import {observable, computed} from 'mobx'
+import autobind from 'autobind-decorator'
+
+import {steamPlayerAPI, steamAPIKey} from '../steam'
 
 export default class Player {
-	store = null
-	@observable name = null
+	@observable name
 
-	constructor(store, props) {
+	constructor(store, {id, steamID, name}) {
 		this.store = store
-		this.id = props.id
-		this.steamID = props.steamID
-		this.name = props.name
+		this.id = id
+		this.steamID = steamID
+		this.name = name
+
+		this.getAvatarURL()
+			.then(this.addAvatarCSS)
 	}
 
-	@computed get current() {return this == this.store.currentPlayer}
+	@computed get current() {
+		return this == this.store.client
+	}
+
+	getAvatarURL() {
+		return (
+			fetch(`${steamPlayerAPI}?key=${steamAPIKey}&steamids=${this.steamID}`)
+				.then(response => response.json())
+				.then(json => new Promise(resolve => resolve(json.response.players[0].avatarfull)))
+		)
+	}
+
+	@autobind addAvatarCSS(avatarURL) {
+		this.store.root.stylesheet.insertRule(`.player-${this.id}.player-row::before`, {
+			'background-image': `url(${avatarURL})`
+		})
+	}
 }

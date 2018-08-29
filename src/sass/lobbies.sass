@@ -15,7 +15,7 @@
 
 .lobbies
 	&-column
-		width: 560px
+		width: $column-width * 2
 		
 	&-list
 		min-height: $text-padding
@@ -35,13 +35,13 @@
 	position: relative
 	padding: ($text-padding - 10) $text-padding 0
 	cursor: pointer
-	transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
-	-webkit-transition: margin-bottom $transition-ease, opacity $transition-ease, color $transition-ease, background-color $transition-ease
+	transition: opacity $transition-ease, color $transition-ease, background-color $transition-ease
+	-webkit-transition: opacity $transition-ease, color $transition-ease, background-color $transition-ease
 
 	&.selected
 		background-color: rgba(#ffffff, 0.075)
 
-	.pulse
+	&-pulse
 		position: absolute
 		top: 0
 		left: 0
@@ -53,21 +53,16 @@
 		transition: opacity $transition-ease
 		-webkit-transition: opacity $transition-ease
 
-	&.current:not(.selected) .pulse
+	&.current:not(.selected) &-pulse
 		opacity: 1
 
 	&::after
 		padding-top: ($text-padding - 10)
 		border-bottom: $text-border
 
-	&:last-child::after
+	&:last-of-type::after
 		border-bottom: none
 
 	.icon-svg-path
 		transition: stroke $transition-ease
 		-webkit-transition: stroke $transition-ease
-
-	&-enter:not(&-enter-active),
-	&-exit-active
-		margin-bottom: -($text-padding + (($text-padding - 10) * 2) + $text-border-thickness)
-		opacity: 0

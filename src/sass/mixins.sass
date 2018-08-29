@@ -1,0 +1,43 @@
+=checkered
+	$background-color: rgba(#808080, 1)
+	$a: 0.3
+	$b: 0
+	$c: $a
+	$d: $b
+	$e: 0.5
+	background-color: $background-color
+	background-size: 16px 16px
+	background-image: linear-gradient(to right, rgba(#000000, $a) 50%, transparent 50%, transparent), linear-gradient(to right, transparent 0%, transparent 50%, rgba(#000000, $b) 50%), linear-gradient(to bottom, rgba(#000000, $c) 50%, transparent 50%, transparent), linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(#000000, $d) 50%), linear-gradient(to bottom, $background-color 50%, transparent 50%, transparent), linear-gradient(to right, transparent 0%, transparent 50%, rgba(#000000, $e) 50%), none
+
+=nowrap
+	overflow: hidden
+	white-space: nowrap
+	text-overflow: ellipsis
+
+=icon
+	width: 20px
+	height: 20px
+
+	.outline
+		stroke-width: 2.75
+
+=icon-big
+	width: 40px
+	height: 40px
+	
+	.outline
+		stroke-width: 2
+
+=dark-divider
+	&::after
+		$padding: 15px
+		position: absolute
+		left: $padding
+		right: $padding
+		bottom: 0
+		height: 1px
+		content: ""
+		background-color: rgba(#000000, 0.2)
+
+	&:last-of-type::after
+		background: none
