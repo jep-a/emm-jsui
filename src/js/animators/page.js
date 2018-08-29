@@ -61,6 +61,11 @@ export default class PageAnimator extends SubAnimator {
 	}
 
 	@autobind lobbyCardEnter(node) {
+		this.setStyle(node, {
+			position: '',
+			left: ''
+		})
+
 		this.registerNode('lobbyCard', node)
 		this.lobbyCardOffset = this.updateOffset('protosLobbies')
 		this.lobbyCardLeft = this.getSavedOffset('lobbyCard')

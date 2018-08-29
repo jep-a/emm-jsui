@@ -9,6 +9,11 @@ export default class NavAnimator extends SubAnimator {
 	}
 
 	@autobind lobbySettingsEnter(node) {
+		this.setStyle(node, {
+			position: '',
+			left: ''
+		})
+
 		this.registerNode('lobbySettings', node)
 		this.lobbySettingsOffset = this.updateOffset('lobbies')
 		this.lobbySettingsLeft = this.getSavedOffset('lobbySettings')
